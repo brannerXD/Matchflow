@@ -15,7 +15,7 @@
                 <img class="icono" src="icons/icon.png" alt="">
             </div>
             <h1 class="text-center mb-4">MatchFlow</h1>
-            <h6 class="text-center mb-3">Login in your account</h6>
+            <h6 class="text-center mb-3">Register your new account</h6>
 
             <form>
                 <div class="mb-3">
@@ -26,7 +26,14 @@
                 <label for="email" class="form-label">Email Address</label>
                 <input type="email" class="form-control" id="email" placeholder="e.g. name@example.com">
             </div>
-
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter your password">
+            </div>
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password">
+            </div>
             <div class="mb-3">
                 <label for="role" class="form-label">Select Role</label>
                 <select class="form-control" id="role">
@@ -34,13 +41,13 @@
                     <option value="admin">Company</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary w-100">Sign In</button>
-            <p class="text-center">¿Dont have an account? <a href="register.html" class="sing-up">Sing Up</a></p>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+            <p class="text-center">¿Do you have an account? <a href="index.html" class="sing-up">Sing in</a></p>
             </form>
         </div>
         </div>
     </section>
-<script type="module" src="js/login.js"></script>
+<script type="module" src="js/register.js"></script>
 <footer>
     <div class="text-center p-3 bg-dark text-white">
         <p>Created By</p>    
