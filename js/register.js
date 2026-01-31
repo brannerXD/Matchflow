@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const fullName = document.getElementById('username');
     const email = document.getElementById('email');
     const password = document.getElementById('password');
-    const confirmPassword = document.getElementById('confirm-password');
+    const confirmPassword = document.getElementById('confirm_password');
     const role = document.getElementById('role');
     const form = document.querySelector('form');
 
