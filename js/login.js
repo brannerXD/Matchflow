@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form');
     const fullName = document.getElementById('username');
     const email = document.getElementById('email');
-    const role = document.getElementById('password'); // Nota: el HTML tiene id="password" pero es el select de role
+    const role = document.getElementById('role');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
