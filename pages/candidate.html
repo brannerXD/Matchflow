@@ -3,23 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Candidate Panel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
+
 <body>
 
 <div class="panel">
     <div class="header-bar">
         <h3>Candidate Panel</h3>
-        <button class="btn btn-outline-danger" onclick="logout()">Logout</button>
+        <button id="logOut" class="btn btn-outline-danger">Logout</button>
     </div>
 
     <div class="section">
         <h5>My Profile</h5>
-        <input id="name" class="form-control" placeholder="Name">
-        <input id="skill" class="form-control" placeholder="Main Skill">
-        <button class="btn btn-dark mt-2" onclick="saveProfile()">Save Profile</button>
-        <button class="btn btn-warning mt-2" onclick="toggleOpenToWork()">Open To Work</button>
+        <input id="title" class="form-control" placeholder="Title as: Software Engineer, Dev Ops, etc.">
+
+        <!-- Checkbox -->
+        <h5 class="text-secondary fs-6">Choose your skills</h5>
+        <div class="btn-group form-outline mb-4" role="group" aria-label="Basic checkbox toggle button group">
+            <input value="HTML" type="checkbox" class="btn-check" id="html" autocomplete="off">
+            <label class="btn btn-outline-primary" for="html">HTML</label>
+
+            <input value="CSS" type="checkbox" class="btn-check" id="css" autocomplete="off">
+            <label class="btn btn-outline-primary" for="css">CSS</label>
+
+            <input value="PYTHON" type="checkbox" class="btn-check" id="python" autocomplete="off">
+            <label class="btn btn-outline-primary" for="python">PYTHON</label>
+
+            <input value="SQL" type="checkbox" class="btn-check" id="sql" autocomplete="off">
+            <label class="btn btn-outline-primary" for="sql">SQL</label>
+
+            <input value="GIT" type="checkbox" class="btn-check" id="git" autocomplete="off">
+            <label class="btn btn-outline-primary" for="git">Git</label>
+
+            <input value="JSON-Server" type="checkbox" class="btn-check" id="json-server" autocomplete="off">
+            <label class="btn btn-outline-primary" for="json-server">JSON-server</label>
+
+            <input value="JS" type="checkbox" class="btn-check" id="js" autocomplete="off">
+            <label class="btn btn-outline-primary" for="js">JS</label>
+        </div>
+
+        <button class="btn btn-dark mt-2">Save Profile</button>
+        <button class="btn btn-warning mt-2">Open To Work</button>
     </div>
 
     <div class="section">
@@ -28,9 +54,9 @@
     </div>
 </div>
 
-<script src="../js/api.js"></script>
-<script src="../js/session.js"></script>
-<script src="../js/candidate.js"></script>
+<script type="module" src="../js/api.js"></script>
+<script type="module" src="../js/session.js"></script>
+<script type="module" src="../js/candidate.js"></script>
 
 </body>
 </html>

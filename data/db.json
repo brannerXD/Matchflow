@@ -1,13 +1,38 @@
 {
   "users": [
     {
-      "id": "b8c9",
-      "email": "kevin@gmail.com",
+      "id": "ee55",
+      "fullName": "Diego Morales",
+      "email": "email@email.com",
+      "password": "123",
+      "role": "candidate",
+      "openToWork": false
+    },
+    {
+      "id": "12a2",
+      "fullName": "Mc'Donalds",
+      "email": "uwu@uwu.com",
+      "password": "123",
+      "role": "company",
+      "openToWork": false
+    },
+    {
+      "id": "22c6",
+      "fullName": "Riwi",
+      "email": "riwi@mail.com",
+      "password": "123",
+      "role": "company",
+      "openToWork": false,
+      "plan": "free"
+    },
+    {
+      "id": "83f4",
+      "fullName": "Vero Martinez",
+      "email": "vero@mail.com",
       "password": "123",
       "role": "candidate",
       "openToWork": false,
-      "name": "",
-      "skill": ""
+      "plan": "free"
     }
   ],
   "candidates": [
@@ -25,7 +50,7 @@
         "email": "sofi@mail.com",
         "phone": "+57 3096584212"
       },
-      "id": "a6a5"
+      "id": "ac65"
     },
     {
       "fullName": "Juan Felipe",
@@ -41,7 +66,7 @@
         "email": "juanfe@mail.com",
         "phone": "+57 3004563202"
       },
-      "id": "cbaa"
+      "id": "bde7"
     },
     {
       "fullName": "Diego Rios",
@@ -55,7 +80,7 @@
         "email": "diego@mail.com",
         "phone": "+57 3096482078"
       },
-      "id": "ebf7"
+      "id": "74c8"
     },
     {
       "fullName": "Carlos",
@@ -70,7 +95,7 @@
         "email": "carlos@mail.com",
         "phone": "+57 3012365496"
       },
-      "id": "f3a8"
+      "id": "c3b8"
     },
     {
       "fullName": "Branner",
@@ -84,19 +109,19 @@
         "email": "breanner@mail.com",
         "phone": "+57 3213846951"
       },
-      "id": "2ab1"
+      "id": "f773"
     }
   ],
   "companies": [
     {
       "name": "Riwi",
       "industry": "Software",
-      "id": "8c7b"
+      "id": "b237"
     },
     {
       "name": "DataForge",
       "industry": "Data",
-      "id": "4384"
+      "id": "131b"
     }
   ],
   "jobs": [
@@ -104,25 +129,25 @@
       "title": "Frontend Jr",
       "description": "HTML, CSS, JS",
       "status": "open",
-      "id": "f128"
+      "id": "4591"
     },
     {
       "title": "QA Jr",
       "description": "Manual testing",
       "status": "open",
-      "id": "995c"
+      "id": "9e76"
     },
     {
       "title": "Backend Jr",
       "description": "Node basics",
       "status": "open",
-      "id": "2433"
+      "id": "5725"
     },
     {
       "title": "Data Assistant",
       "description": "Data entry",
       "status": "open",
-      "id": "5f8a"
+      "id": "e3fc"
     }
   ],
   "matches": [],

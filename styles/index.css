@@ -1,0 +1,80 @@
+body {
+    color: #e0e0e0;
+    font-family: 'Orbitron', 'Courier New', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.icono {
+    width: 100px;
+    height: 100px;
+}
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,20,0.95)),
+        url('https://img.freepik.com/free-vector/black-golden-marble-background_52683-64370.jpg?semt=ais_hybrid&w=740&q=80')
+        center/cover no-repeat;
+    overflow: hidden;
+}
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.bg-light {
+    color: #e0e0e0;
+    overflow-x: hidden;
+}
+
+.btn {
+    background-color: darkgoldenrod;
+    color: black;
+    border-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.text-center {
+    color: white;
+}
+
+.form-label {
+    color: white;
+}
+
+.sing-in {
+    color: black;
+}
+.sing-up {
+    color: gold;
+}
+
+.tr {
+    color: #a4e7e7;
+    text-shadow: 0 0 5px #c9c9c9, 0 0 10px #c9c9c9;
+}
+
+.mk{
+    color: rgb(228, 198, 28);
+    text-shadow: 0 0 5px #c9c9c9, 0 0 10px #c9c9c9;
+}
+
+.clans {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.footer {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #c9c9c9;
+}
