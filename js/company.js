@@ -1,5 +1,16 @@
+//MF2
+import { getCandidates } from "./storage.js";
+
+//MF2
+document.addEventListener("DOMContentLoaded", async () =>{
+    loadCandidates();
+})
+
+
+
 async function loadCandidates() {
-    const candidates = await getData("candidates");
+    //MF2: getCandidates as new function
+    const candidates = await getCandidates("candidates");
     localStorage.setItem("candidatesCache", JSON.stringify(candidates));
 
     const ul = document.getElementById("candidates");
@@ -10,7 +21,7 @@ async function loadCandidates() {
         .forEach(c => {
             const li = document.createElement("li");
             li.innerHTML = `
-                ${c.name} - ${c.skill}
+                ${c.name} - ${c.skills}
                 <button onclick="reserveAndMatch(${c.id})" class="btn btn-sm btn-danger">
                     Reservar y hacer Match
                 </button>

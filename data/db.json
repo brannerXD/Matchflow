@@ -17,11 +17,56 @@
       "openToWork": false,
       "name": "",
       "skill": ""
+    },
+    {
+      "id": "dc8e",
+      "email": "duvi@duvi.com",
+      "password": "123",
+      "role": "candidate",
+      "openToWork": false,
+      "name": "",
+      "skill": ""
+    },
+        {
+      "id": "9g5f",
+      "email": "sofi@mail.com",
+      "password": "123456",
+      "role": "candidate",
+      "openToWork": false,
+      "name": "",
+      "skill": ""
+    },
+    {
+      "id": "6g44",
+      "email": "riwi@mail.com",
+      "password": "123",
+      "role": "company",
+      "openToWork": false,
+      "name": "",
+      "skill": ""
+    },
+    {
+      "id": "dg4e",
+      "email": "duvi@duvi.com",
+      "password": "123",
+      "role": "candidate",
+      "openToWork": false,
+      "name": "",
+      "skill": ""
+    },
+    {
+      "id": "dg4e",
+      "email": "duvi@duvi.com",
+      "password": "123",
+      "role": "candidate",
+      "openToWork": false,
+      "name": "",
+      "skill": ""
     }
   ],
   "candidates": [
     {
-      "fullName": "sofia",
+      "name": "Sofia",
       "title": "Frontend Developer",
       "skills": [
         "HTML",
@@ -37,7 +82,7 @@
       "id": "ac65"
     },
     {
-      "fullName": "Juan Felipe",
+      "name": "Juan Felipe",
       "title": "Backend Developer",
       "skills": [
         "Node",
@@ -53,7 +98,7 @@
       "id": "bde7"
     },
     {
-      "fullName": "Diego Rios",
+      "name": "Diego Rios",
       "title": "QA Tester",
       "skills": [
         "Testing"
@@ -67,7 +112,7 @@
       "id": "74c8"
     },
     {
-      "fullName": "Carlos",
+      "name": "Carlos",
       "title": "Fullstack Developer",
       "skills": [
         "JavaScript",
@@ -82,7 +127,7 @@
       "id": "c3b8"
     },
     {
-      "fullName": "Branner",
+      "name": "Branner",
       "title": "UI Designer",
       "skills": [
         "Figma"
