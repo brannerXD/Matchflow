@@ -1,18 +1,64 @@
-
 const API_URL = "http://localhost:3000";
 
 // Mock sesión
 const isLogged = true;
 const currentUser = {
   role: "company",
-  companyId: "4401"
+  companyId: "4401",
+  plan: "Free"
 };
+// PLAN AND RESERVATIONS
+const planLimits = {
+  "Free" : 1,
+  "Bussines": 3,
+  "Enterprise" : 6,
+}
 
 let candidates = [];
 let reservations = [];
 
 
 const container = document.querySelector(".candidates-grid");
+
+async function reserveNewCandidates(candidateId) {
+  try {
+    // Endpoint
+    const resp = await fetch(`${API_URL}/reservations`);
+    const allReservations = await resp.json();
+
+    // Count reservations 
+    const activeReservationsCount = allReservations.filter(r => 
+      r.active && r.companyId === currentUser.companyId
+    ).length;
+
+    // reservations Limit 
+    const userLimit = planLimits[currentUser.plan] || 0;
+
+    if (activeReservationsCount >= userLimit) {
+      alert(`Límite excedido: Tu plan ${currentUser.plan} solo permite ${userLimit} reserva(s) activa(s).`);
+      return;
+    }
+
+    const newReservation = {
+      companyId: currentUser.companyId,
+      candidateId: candidateId,
+      active: true,
+      date: new Date().toISOString()
+    };
+
+    await fetch(`${API_URL}/reservations`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newReservation)
+    });
+
+    alert('Candidato Reservado con exito');
+    loadReservedCandidates();
+  } catch (error) {
+    console.error("Error al procesar la reserva:", error)
+  }
+}
+
 
 
 async function loadReservedCandidates() {
@@ -72,14 +118,18 @@ function renderReservedCandidates() {
     return;
   }
 
-  const list = getReservedCandidates();
 
-  if (list.length === 0) {
-    container.innerHTML = "<p>No tienes candidatos reservados</p>";
-    return;
-  }
+  const reservedList = getReservedCandidates();
+  
 
-  list.forEach(c => {
+  const myReservedIds = reservations
+    .filter(r => r.active && r.companyId === currentUser.companyId)
+    .map(r => r.candidateId);
+
+
+  candidates.forEach(c => {
+    const isAlreadyReservedByMe = myReservedIds.includes(c.id);
+    
     const card = document.createElement("div");
     card.className = "candidate-card";
 
@@ -88,15 +138,18 @@ function renderReservedCandidates() {
       <p>${c.title}</p>
       <p>${c.skills.join(", ")}</p>
 
-      <button class="btn btn-secondary"
-        onclick="releaseReservation('${c.id}')">
-        Liberar
-      </button>
+      ${isAlreadyReservedByMe 
+        ? `<button class="btn btn-secondary" onclick="releaseReservation('${c.id}')">Liberar</button>`
+        : `<button class="btn btn-primary" onclick="reserveNewCandidates('${c.id}')">Reservar</button>`
+      }
     `;
 
     container.appendChild(card);
   });
 }
 
+
+window.reserveNewCandidates = reserveNewCandidates;
+window.releaseReservation = releaseReservation;
 
 document.addEventListener("DOMContentLoaded", loadReservedCandidates);
