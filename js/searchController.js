@@ -1,95 +1,217 @@
-// Ajustado para que apunte directamente a tu archivo sin la subcarpeta /services/
-import { getAvailableCandidates, createMatch } from './candidateService.js';
+/***********************
+ * CONFIG
+ ***********************/
+const API_URL = "http://localhost:3000";
+const container = document.querySelector(".candidates-grid");
+const searchInput = document.getElementById("searchInput");
 
-const candidatesGrid = document.getElementById('candidates-grid');
-const searchInput = document.getElementById('search-skill');
-const CACHE_KEY = 'matchflow_candidates_cache';
+/***********************
+ * SESSION (MOCK)
+ ***********************/
+const isLogged = true;
 
-/**
- * Main function to initialize the candidate search view
- */
-export async function initSearch(query = "") {
-    // 1. Try to load from Cache first ONLY if there is no active search query
-    if (!query) {
-        const cachedData = localStorage.getItem(CACHE_KEY);
-        if (cachedData) {
-            renderCandidates(JSON.parse(cachedData));
-        }
-    }
+const currentUser = {
+  role: "company",
+  companyId: "4401"
+};
 
-    // 2. Fetch fresh data (filtered by skill if query exists)
-    try {
-        const freshCandidates = await getAvailableCandidates(query);
-        
-        // 3. Update Cache only for the general list
-        if (!query) {
-            localStorage.setItem(CACHE_KEY, JSON.stringify(freshCandidates));
-        }
-        
-        renderCandidates(freshCandidates);
-    } catch (error) {
-        console.error("Failed to sync with server:", error);
-    }
+const currentJobOfferId = "e829";
+
+/***********************
+ * STATE
+ ***********************/
+
+let candidates = [];
+let reservations = [];
+
+/***********************
+ * LOAD DATA
+ ***********************/
+async function loadData() {
+  try {
+    const [cRes, rRes] = await Promise.all([
+      fetch(`${API_URL}/candidates`),
+      fetch(`${API_URL}/reservations`)
+    ]);
+
+    candidates = await cRes.json();
+    reservations = await rRes.json();
+
+    renderCandidates(searchCandidates(""));
+  } catch (error) {
+    console.error("Error loading data:", error);
+  }
 }
 
-/**
- * Renders the candidate cards into the DOM
- */
-function renderCandidates(candidates) {
-    candidatesGrid.innerHTML = ""; 
-
-    if (candidates.length === 0) {
-        candidatesGrid.innerHTML = "<p>No candidates found matching your criteria.</p>";
-        return;
-    }
-
-    candidates.forEach(candidate => {
-        const card = document.createElement('article');
-        card.className = 'candidate-card';
-
-        card.innerHTML = `
-            <h3>${candidate.fullName}</h3>
-            <p class="title"><strong>${candidate.title}</strong></p>
-            <p class="bio">${candidate.bio}</p>
-            <div class="skills-container">
-                ${candidate.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-            </div>
-            <button class="btn-match" data-id="${candidate.id}">
-                Match with Candidate
-            </button>
-        `;
-
-        const matchBtn = card.querySelector('.btn-match');
-        matchBtn.addEventListener('click', () => handleMatch(candidate.id));
-
-        candidatesGrid.appendChild(card);
-    });
+/***********************
+ * RESERVATION LOGIC
+ ***********************/
+function isCandidateReserved(candidateId) {
+  return reservations.some(
+    r => r.active === true && r.candidateId === candidateId
+  );
 }
 
-/**
- * Handles the Match action
- */
-async function handleMatch(candidateId) {
-    const mockCompanyId = 1; 
-    const mockOfferId = 1;
-
-    if (!confirm("Confirm match request?")) return;
-
-    try {
-        const newMatch = await createMatch(candidateId, mockCompanyId, mockOfferId);
-        if (newMatch) {
-            alert(`Match successful! Candidate #${candidateId} notified.`);
-        }
-    } catch (error) {
-        alert("Error creating match. Please try again.");
-    }
+/***********************
+ * VISIBILITY RULES
+ ***********************/
+function canSeeCandidate(candidate) {
+  if (!isLogged) return false;
+  if (currentUser.role !== "company") return false;
+  if (!candidate.openToWork) return false;
+  if (isCandidateReserved(candidate.id)) return false;
+  return true;
 }
 
-// 4. EVENT LISTENER: Search as the user types (Debounce-like behavior)
-searchInput.addEventListener('input', (e) => {
-    const value = e.target.value;
-    initSearch(value);
-});
+/***********************
+ * SEARCH
+ ***********************/
+function searchCandidates(text) {
+  const query = text.toLowerCase().trim();
 
-// Start the app
-initSearch();
+  return candidates
+    .filter(canSeeCandidate)
+    .filter(c =>
+      c.fullName.toLowerCase().includes(query) ||
+      c.title.toLowerCase().includes(query) ||
+      c.skills.some(skill =>
+        skill.toLowerCase().includes(query)
+      )
+    );
+}
+
+/***********************
+ * RESERVE
+ ***********************/
+async function reserveCandidate(candidateId) {
+  if (isCandidateReserved(candidateId)) return;
+
+  const reservation = {
+    candidateId,
+    companyId: currentUser.companyId,
+    jobOfferId: currentJobOfferId,
+    active: true
+  };
+
+  await fetch(`${API_URL}/reservations`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(reservation)
+  });
+
+  loadData();
+}
+async function createMatch(candidateId) {
+  const match = {
+    companyId: currentUser.companyId,
+    jobOfferId: currentJobOfferId,
+    candidateId: candidateId,
+    status: "pending"
+  };
+
+  await fetch(`${API_URL}/matches`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(match)
+  });
+
+  // redirige a la página donde está la tabla
+  window.location.href = "../pages/marches.html";
+}
+
+
+/***********************
+ * RELEASE
+ ***********************/
+async function releaseReservation(candidateId) {
+  const reservation = reservations.find(
+    r =>
+      r.active &&
+      r.candidateId === candidateId &&
+      r.companyId === currentUser.companyId
+  );
+
+  if (!reservation) return;
+
+  await fetch(`${API_URL}/reservations/${reservation.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ active: false })
+  });
+
+  loadData();
+}
+
+/***********************
+ * RENDER
+***********************/
+function renderCandidates(list) {
+  container.innerHTML = "";
+
+  if (!isLogged) {
+    container.innerHTML = "<p>Debes iniciar sesión</p>";
+    return;
+  }
+
+  if (currentUser.role !== "company") {
+    container.innerHTML = "<p>Solo las empresas pueden ver candidatos</p>";
+    return;
+  }
+
+  if (list.length === 0) {
+    container.innerHTML = "<p>No hay candidatos disponibles</p>";
+    return;
+  }
+
+  list.forEach(c => {
+    const isReserved = isCandidateReserved(c.id);
+
+    const card = document.createElement("div");
+    card.className = "candidate-card";
+
+    card.innerHTML = `
+    <h3>${c.fullName}</h3>
+    <p class="candidate-role">${c.title}</p>
+    <p class="candidate-skills">${c.skills.join(", ")}</p>
+    
+    <div class="candidate-actions">
+    ${isReserved
+        ? `<span class="badge">Reservado</span>
+      <button class="btn btn-secondary"
+      onclick="releaseReservation('${c.id}')">
+      Liberar
+      </button>`
+        : `<button class="btn btn-primary"
+      onclick="reserveCandidate('${c.id}')">
+      Reservar
+      </button>`
+      }
+    
+    <!-- BOTÓN MATCH (SOLO VISUAL) -->
+    <button class="btn btn-success"
+      onclick="createMatch('${c.id}')">
+      Match
+    </button>
+
+    
+    <button class="btn btn-outline">Ver perfil</button>
+    </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+/***********************
+ * EVENTS
+ ***********************/
+if (searchInput) {
+  searchInput.addEventListener("input", e => {
+    renderCandidates(searchCandidates(e.target.value));
+  });
+}
+
+/***********************
+ * INIT
+ ***********************/
+loadData();
