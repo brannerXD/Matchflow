@@ -1,120 +1,130 @@
-{   "users":[],
-    "candidates": [
-        {
-            
-            "fullName": "sofia",
-            "title": "Frontend Developer",
-            "skills": [
-                "HTML",
-                "CSS",
-                "JS"
-            ],
-            "bio": "Junior frontend dev",
-            "openToWork": true,
-            "contact": {
-                "email": "sofi@mail.com",
-                "phone": "+57 3096584212"
-            }
-        },
-        {
-            
-            "fullName": "Juan Felipe",
-            "title": "Backend Developer",
-            "skills": [
-                "Node",
-                "Express",
-                "C#"
-            ],
-            "bio": "Backend lover",
-            "openToWork": false,
-            "contact": {
-                "email": "juanfe@mail.com",
-                "phone": "+57 3004563202"
-            }
-        },
-        {
-            
-            "fullName": "Diego Rios",
-            "title": "QA Tester",
-            "skills": [
-                "Testing"
-            ],
-            "bio": "QA junior",
-            "openToWork": true,
-            "contact": {
-                "email": "diego@mail.com",
-                "phone": "+57 3096482078"
-            }
-        },
-        {
-            
-            "fullName": "Carlos",
-            "title": "Fullstack Developer",
-            "skills": [
-                "JavaScript",
-                "Node"
-            ],
-            "bio": "Fullstack junior",
-            "openToWork": false,
-            "contact": {
-                "email": "carlos@mail.com",
-                "phone": "+57 3012365496"
-            }
-        },
-        {
-            
-            "fullName": "Branner",
-            "title": "UI Designer",
-            "skills": [
-                "Figma"
-            ],
-            "bio": "UI/UX junior",
-            "openToWork": false,
-            "contact": {
-                "email": "breanner@mail.com",
-                "phone": "+57 3213846951"
-            }
-        }
-    ],
-    "companies": [
-        {
-            
-            "name": "Riwi",
-            "industry": "Software"
-        },
-        {
-            
-            "name": "DataForge",
-            "industry": "Data"
-        }
-    ],
-    "jobs": [
-        {
-            
-            
-            "title": "Frontend Jr",
-            "description": "HTML, CSS, JS",
-            "status": "open"
-        },
-        {
-            
-            "title": "QA Jr",
-            "description": "Manual testing",
-            "status": "open"
-        },
-        {
-            
-            "title": "Backend Jr",
-            "description": "Node basics",
-            "status": "open"
-        },
-        {
-            
-            "title": "Data Assistant",
-            "description": "Data entry",
-            "status": "open"
-        }
-    ],
-    "matches": [],
-    "reservations": []
+{
+  "users": [
+    {
+      "id": "b8c9",
+      "email": "kevin@gmail.com",
+      "password": "123",
+      "role": "candidate",
+      "openToWork": false,
+      "name": "",
+      "skill": ""
+    }
+  ],
+  "candidates": [
+    {
+      "fullName": "sofia",
+      "title": "Frontend Developer",
+      "skills": [
+        "HTML",
+        "CSS",
+        "JS"
+      ],
+      "bio": "Junior frontend dev",
+      "openToWork": true,
+      "contact": {
+        "email": "sofi@mail.com",
+        "phone": "+57 3096584212"
+      },
+      "id": "a6a5"
+    },
+    {
+      "fullName": "Juan Felipe",
+      "title": "Backend Developer",
+      "skills": [
+        "Node",
+        "Express",
+        "C#"
+      ],
+      "bio": "Backend lover",
+      "openToWork": false,
+      "contact": {
+        "email": "juanfe@mail.com",
+        "phone": "+57 3004563202"
+      },
+      "id": "cbaa"
+    },
+    {
+      "fullName": "Diego Rios",
+      "title": "QA Tester",
+      "skills": [
+        "Testing"
+      ],
+      "bio": "QA junior",
+      "openToWork": true,
+      "contact": {
+        "email": "diego@mail.com",
+        "phone": "+57 3096482078"
+      },
+      "id": "ebf7"
+    },
+    {
+      "fullName": "Carlos",
+      "title": "Fullstack Developer",
+      "skills": [
+        "JavaScript",
+        "Node"
+      ],
+      "bio": "Fullstack junior",
+      "openToWork": false,
+      "contact": {
+        "email": "carlos@mail.com",
+        "phone": "+57 3012365496"
+      },
+      "id": "f3a8"
+    },
+    {
+      "fullName": "Branner",
+      "title": "UI Designer",
+      "skills": [
+        "Figma"
+      ],
+      "bio": "UI/UX junior",
+      "openToWork": false,
+      "contact": {
+        "email": "breanner@mail.com",
+        "phone": "+57 3213846951"
+      },
+      "id": "2ab1"
+    }
+  ],
+  "companies": [
+    {
+      "name": "Riwi",
+      "industry": "Software",
+      "id": "8c7b"
+    },
+    {
+      "name": "DataForge",
+      "industry": "Data",
+      "id": "4384"
+    }
+  ],
+  "jobs": [
+    {
+      "title": "Frontend Jr",
+      "description": "HTML, CSS, JS",
+      "status": "open",
+      "id": "f128"
+    },
+    {
+      "title": "QA Jr",
+      "description": "Manual testing",
+      "status": "open",
+      "id": "995c"
+    },
+    {
+      "title": "Backend Jr",
+      "description": "Node basics",
+      "status": "open",
+      "id": "2433"
+    },
+    {
+      "title": "Data Assistant",
+      "description": "Data entry",
+      "status": "open",
+      "id": "5f8a"
+    }
+  ],
+  "matches": [],
+  "reservations": []
 }
