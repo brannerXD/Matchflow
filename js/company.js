@@ -1,14 +1,17 @@
 //MF2
 import { getCandidates } from "./storage.js";
-import { getSession, checkSession } from "./utils.js";
+import * as session from "./session.js"
 
-const currentUser = getSession();
 
-//MF2
 document.addEventListener("DOMContentLoaded", async () => {
-  checkSession(currentUser);
-  loadCandidates();
-});
+    let loggedUser = session.getSession()
+    if (loggedUser) {
+        if (loggedUser.role !== "company") {
+            window.location.replace("./pages/candidate.html")
+        }
+    }
+    loadCandidates();
+})
 
 async function loadCandidates() {
   //MF2: getCandidates as new function
