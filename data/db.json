@@ -15,6 +15,24 @@
       "password": "123",
       "role": "company",
       "openToWork": false
+    },
+    {
+      "id": "22c6",
+      "fullName": "Riwi",
+      "email": "riwi@mail.com",
+      "password": "123",
+      "role": "company",
+      "openToWork": false,
+      "plan": "free"
+    },
+    {
+      "id": "83f4",
+      "fullName": "Vero Martinez",
+      "email": "vero@mail.com",
+      "password": "123",
+      "role": "candidate",
+      "openToWork": false,
+      "plan": "free"
     }
   ],
   "candidates": [

@@ -1,5 +1,5 @@
 import * as storage from "./storage.js"
-import * as session from "./session";
+import * as session from "./session.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
     let loggedUser = session.getSession()
