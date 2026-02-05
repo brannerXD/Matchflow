@@ -126,7 +126,22 @@
       "companyId": "4401"
     }
   ],
-  "matches": [],
+  "matches": [
+    {
+      "id": "2656",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "candidateId": "28g4",
+      "status": "hired"
+    },
+    {
+      "id": "63c5",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "candidateId": "28g4",
+      "status": "contacted"
+    }
+  ],
   "reservations": [
     {
       "id": "ae98",
@@ -154,7 +169,14 @@
       "candidateId": "28g4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": true
+      "active": false
+    },
+    {
+      "id": "44b2",
+      "candidateId": "29c4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false
     }
   ]
 }

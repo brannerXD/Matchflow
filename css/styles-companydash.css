@@ -205,3 +205,19 @@ li a {
   text-decoration: none;
   display: inline-block;
 }
+
+/* select combinado */
+.status-select.pending { background-color: #9CA3AF; }
+.status-select.contacted { background-color: #F59E0B; }
+.status-select.interview { background-color: #3B82F6; }
+.status-select.hired { background-color: #10B981; }
+.status-select.discarded { background-color: #EF4444; }
+
+.whatsapp {
+  color: green;
+}
+
+.whatsapp:hover {
+  box-shadow: #163128;
+  transform: scale(1.2);
+}

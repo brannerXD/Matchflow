@@ -1,0 +1,11 @@
+${
+          match.status === "contacted" && candidate?.phone
+            ? `<a
+      href="https://wa.me/${normalizePhone(candidate.phone)}"
+      target="_blank"
+      class="btn btn-success btn-sm"
+    >
+      WhatsApp
+    </a>`
+            : ""
+        }
