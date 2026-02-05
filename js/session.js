@@ -1,12 +1,12 @@
-function saveSession(user){
-    localStorage.setItem("user", JSON.stringify(user));
+export function saveSession(user){
+    sessionStorage.setItem("user", JSON.stringify(user));
 }
 
-function getSession(){
-    return JSON.parse(localStorage.getItem("user"));
+export function getSession(){
+    return JSON.parse(sessionStorage.getItem("user"));
 }
 
-function logout(){
-    localStorage.removeItem("user");
+export function logout(){
+    sessionStorage.removeItem("user");
     window.location.href = "../index.html";
 }

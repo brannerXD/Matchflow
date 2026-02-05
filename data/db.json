@@ -1,22 +1,20 @@
 {
   "users": [
     {
-      "id": "94cf",
-      "email": "vero@mail.com",
-      "password": "123456",
+      "id": "ee55",
+      "fullName": "Diego Morales",
+      "email": "email@email.com",
+      "password": "123",
       "role": "candidate",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
+      "openToWork": false
     },
     {
-      "id": "6a44",
-      "email": "riwi@mail.com",
+      "id": "12a2",
+      "fullName": "Mc'Donalds",
+      "email": "uwu@uwu.com",
       "password": "123",
       "role": "company",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
+      "openToWork": false
     }
   ],
   "candidates": [
