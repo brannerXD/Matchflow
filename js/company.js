@@ -1,3 +1,14 @@
+import * as session from "./session.js"
+
+document.addEventListener("DOMContentLoaded", async () => {
+    let loggedUser = session.getSession()
+    if (loggedUser) {
+        if (loggedUser.role !== "company") {
+            window.location.replace("./pages/candidate.html")
+        }
+    }
+})
+
 async function loadCandidates() {
     const candidates = await getData("candidates");
     localStorage.setItem("candidatesCache", JSON.stringify(candidates));

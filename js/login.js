@@ -1,6 +1,14 @@
 import * as storage from "./storage.js";
 import * as session from "./session.js"
 
+// Protect the route so no logged user can go to log in again
+document.addEventListener("DOMContentLoaded", async () => {
+    let loggedUser = session.getSession()
+    if (loggedUser) {
+        window.location.replace("../index.html")
+    }
+})
+
 document.getElementById("loginButton").addEventListener("click", async (e) => {
     e.preventDefault()
     await login()
@@ -30,8 +38,8 @@ async function login() {
     });
 
     if(user.role === "candidate"){
-        window.location.replace("./../pages/candidate.html")
+        window.location.replace("./pages/candidate.html")
     } else {
-        window.location.replace("./../pages/company.html")
+        window.location.replace("./pages/company.html")
     }
 }

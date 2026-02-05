@@ -1,4 +1,12 @@
 import * as storage from "./storage.js"
+import * as session from "./session";
+
+document.addEventListener("DOMContentLoaded", async () => {
+    let loggedUser = session.getSession()
+    if (loggedUser) {
+        window.location.replace("../index.html")
+    }
+})
 
 document.getElementById("sendRegister").addEventListener("click", async (e) => {
     e.preventDefault()
@@ -27,7 +35,8 @@ async function register() {
         email,
         password,
         role,
-        openToWork: false
+        openToWork: false,
+        plan: "free"
     })
 
     alert("User registered successfully");
