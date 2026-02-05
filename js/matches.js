@@ -1,118 +1,53 @@
-import { getData, postData, patchData, deleteData } from "./api.js";
+const API_URL = "http://localhost:3000";
+const tableBody = document.getElementById("matchesTableBody");
 
-const modalEl = document.getElementById("exampleModal");
-const saveMatch = document.getElementById("saveMatch");
-const tableBody = document.querySelector("#matchesTable tbody");
 
-let dataLoaded = false;
-
-/***********************
- * MODAL LOAD
- ***********************/
-modalEl.addEventListener("shown.bs.modal", loadModalData);
-
-async function loadModalData() {
-  if (dataLoaded) return;
-  dataLoaded = true;
-
-  try {
-    const [offerts, candidates] = await Promise.all([
-      getData("jobOffers"),
-      getData("candidates"),
-    ]);
-
-    const listOfferts = document.getElementById("listOfferts");
-    const listCandidates = document.getElementById("listCandidates");
-
-    listOfferts.innerHTML = "";
-    listCandidates.innerHTML = "";
-
-    listOfferts.appendChild(createOption("", "Select an offer"));
-    listCandidates.appendChild(createOption("", "Select a candidate"));
-
-    offerts.forEach(offert => {
-      listOfferts.appendChild(createOption(offert.id, offert.title));
-    });
-
-    candidates.forEach(candidate => {
-      listCandidates.appendChild(createOption(candidate.id, candidate.fullName));
-    });
-
-    // auto-select candidate from button Match
-    const savedCandidateId = localStorage.getItem("selectedCandidateId");
-    if (savedCandidateId) {
-      listCandidates.value = savedCandidateId;
-    }
-
-  } catch (error) {
-    console.error("Error loading modal data:", error);
-  }
-}
-
-function createOption(value, text) {
-  const option = document.createElement("option");
-  option.value = value;
-  option.textContent = text;
-  return option;
-}
-
-/***********************
- * SAVE MATCH
- ***********************/
-saveMatch.addEventListener("click", async () => {
-  const offerId = document.getElementById("listOfferts").value;
-  const candidateId = document.getElementById("listCandidates").value;
-  const status = document.getElementById("status").value;
-
-  if (!offerId || !candidateId || !status) {
-    alert("Select offer, candidate and status");
-    return;
-  }
-
-  try {
-    await postData("matches", {
-      companyId: "4401",
-      jobOfferId: offerId,
-      candidateId: candidateId,
-      status: status
-    });
-
-    localStorage.removeItem("selectedCandidateId");
-    loadMatches();
-    alert("Match saved ✅");
-
-  } catch (error) {
-    console.error("Error saving match:", error);
-  }
-});
-
-/***********************
- * LOAD TABLE
- ***********************/
 async function loadMatches() {
-  const [matches, candidates, companies, offers] = await Promise.all([
-    getData("matches"),
-    getData("candidates"),
-    getData("companies"),
-    getData("jobOffers"),
+  const [mRes, cRes, coRes] = await Promise.all([
+    fetch(`${API_URL}/matches`),
+    fetch(`${API_URL}/candidates`),
+    fetch(`${API_URL}/companies`)
   ]);
 
-  renderMatches(matches, candidates, companies, offers);
+  const matches = await mRes.json();
+  const candidates = await cRes.json();
+  const companies = await coRes.json();
+
+  renderMatches(matches, candidates, companies);
 }
 
-function renderMatches(matches, candidates, companies, offers) {
+
+function renderMatches(matches, candidates, companies) {
   tableBody.innerHTML = "";
+
+  if (matches.length === 0) {
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="5" class="text-center">
+          No hay matches
+        </td>
+      </tr>
+    `;
+    return;
+  }
 
   matches.forEach(match => {
     const candidate = candidates.find(c => c.id == match.candidateId);
     const company = companies.find(c => c.id == match.companyId);
+
     const tr = document.createElement("tr");
+
     tr.innerHTML = `
       <td>${company ? company.name : match.companyId}</td>
       <td>${match.jobOfferId}</td>
-      <td>${candidate ? `${candidate.fullName} — ${candidate.title}`: match.candidateId}</td>
       <td>
-        <select class="form-select form-select-sm status-select" data-id="${match.id}">
+        ${candidate
+          ? `${candidate.fullName} — ${candidate.title}`
+          : match.candidateId}
+      </td>
+      <td>
+        <select class="form-select form-select-sm status-select"
+          data-id="${match.id}">
           <option value="pending" ${match.status === "pending" ? "selected" : ""}>Pending</option>
           <option value="contacted" ${match.status === "contacted" ? "selected" : ""}>Contacted</option>
           <option value="interview" ${match.status === "interview" ? "selected" : ""}>Interview</option>
@@ -121,38 +56,42 @@ function renderMatches(matches, candidates, companies, offers) {
         </select>
       </td>
       <td>
-        <button class="btn btn-danger btn-sm delete-btn" data-id="${match.id}">
+        <button class="btn btn-danger btn-sm delete-btn"
+          data-id="${match.id}">
           Delete
         </button>
       </td>
     `;
+
     tableBody.appendChild(tr);
   });
 }
 
-/***********************
- * EVENTS
- ***********************/
+
 tableBody.addEventListener("change", async e => {
   if (!e.target.classList.contains("status-select")) return;
 
-  await patchData("matches", e.target.dataset.id, {
-    status: e.target.value
-  });
+  const matchId = e.target.dataset.id;
+  const newStatus = e.target.value;
 
-  loadMatches();
+  await fetch(`${API_URL}/matches/${matchId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status: newStatus })
+  });
 });
 
 tableBody.addEventListener("click", async e => {
   if (!e.target.classList.contains("delete-btn")) return;
 
-  if (!confirm("Delete this match?")) return;
+  const matchId = e.target.dataset.id;
 
-  await deleteData("matches", e.target.dataset.id);
+  await fetch(`${API_URL}/matches/${matchId}`, {
+    method: "DELETE"
+  });
+
   loadMatches();
 });
 
-/***********************
- * INIT
- ***********************/
+
 loadMatches();

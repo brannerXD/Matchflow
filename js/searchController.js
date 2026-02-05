@@ -1,13 +1,9 @@
-/***********************
- * CONFIG
- ***********************/
+
 const API_URL = "http://localhost:3000";
 const container = document.querySelector(".candidates-grid");
 const searchInput = document.getElementById("searchInput");
 
-/***********************
- * SESSION (MOCK)
- ***********************/
+
 const isLogged = true;
 
 const currentUser = {
@@ -17,16 +13,11 @@ const currentUser = {
 
 const currentJobOfferId = "e829";
 
-/***********************
- * STATE
- ***********************/
 
 let candidates = [];
 let reservations = [];
 
-/***********************
- * LOAD DATA
- ***********************/
+
 async function loadData() {
   try {
     const [cRes, rRes] = await Promise.all([
@@ -43,18 +34,12 @@ async function loadData() {
   }
 }
 
-/***********************
- * RESERVATION LOGIC
- ***********************/
 function isCandidateReserved(candidateId) {
   return reservations.some(
     r => r.active === true && r.candidateId === candidateId
   );
 }
 
-/***********************
- * VISIBILITY RULES
- ***********************/
 function canSeeCandidate(candidate) {
   if (!isLogged) return false;
   if (currentUser.role !== "company") return false;
@@ -63,9 +48,6 @@ function canSeeCandidate(candidate) {
   return true;
 }
 
-/***********************
- * SEARCH
- ***********************/
 function searchCandidates(text) {
   const query = text.toLowerCase().trim();
 
@@ -80,9 +62,7 @@ function searchCandidates(text) {
     );
 }
 
-/***********************
- * RESERVE
- ***********************/
+
 async function reserveCandidate(candidateId) {
   if (isCandidateReserved(candidateId)) return;
 
@@ -114,15 +94,10 @@ async function createMatch(candidateId) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(match)
   });
-
-  // redirige a la página donde está la tabla
-  window.location.href = "../pages/marches.html";
 }
 
 
-/***********************
- * RELEASE
- ***********************/
+
 async function releaseReservation(candidateId) {
   const reservation = reservations.find(
     r =>
@@ -142,9 +117,6 @@ async function releaseReservation(candidateId) {
   loadData();
 }
 
-/***********************
- * RENDER
-***********************/
 function renderCandidates(list) {
   container.innerHTML = "";
 
@@ -202,16 +174,12 @@ function renderCandidates(list) {
   });
 }
 
-/***********************
- * EVENTS
- ***********************/
+
 if (searchInput) {
   searchInput.addEventListener("input", e => {
     renderCandidates(searchCandidates(e.target.value));
   });
 }
 
-/***********************
- * INIT
- ***********************/
+
 loadData();
