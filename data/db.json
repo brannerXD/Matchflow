@@ -1,64 +1,26 @@
 {
   "users": [
     {
-      "id": "94cf",
-      "email": "vero@mail.com",
-      "password": "123456",
+      "id": "ee55",
+      "fullName": "Diego Morales",
+      "email": "email@email.com",
+      "password": "123",
       "role": "candidate",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
+      "openToWork": false
     },
     {
-      "id": "6a44",
+      "id": "12a2",
+      "fullName": "Mc'Donalds",
+      "email": "uwu@uwu.com",
+      "password": "123",
+      "role": "company",
+      "openToWork": false
+    },
+    {
+      "id": "1a53",
       "email": "riwi@mail.com",
       "password": "123",
       "role": "company",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
-    },
-    {
-      "id": "dc8e",
-      "email": "duvi@duvi.com",
-      "password": "123",
-      "role": "candidate",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
-    },
-        {
-      "id": "9g5f",
-      "email": "sofi@mail.com",
-      "password": "123456",
-      "role": "candidate",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
-    },
-    {
-      "id": "6g44",
-      "email": "riwi@mail.com",
-      "password": "123",
-      "role": "company",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
-    },
-    {
-      "id": "dg4e",
-      "email": "duvi@duvi.com",
-      "password": "123",
-      "role": "candidate",
-      "openToWork": false,
-      "name": "",
-      "skill": ""
-    },
-    {
-      "id": "dg4e",
-      "email": "duvi@duvi.com",
-      "password": "123",
-      "role": "candidate",
       "openToWork": false,
       "name": "",
       "skill": ""
@@ -66,7 +28,7 @@
   ],
   "candidates": [
     {
-      "name": "Sofia",
+      "fullName": "sofia",
       "title": "Frontend Developer",
       "skills": [
         "HTML",
@@ -82,7 +44,7 @@
       "id": "ac65"
     },
     {
-      "name": "Juan Felipe",
+      "fullName": "Juan Felipe",
       "title": "Backend Developer",
       "skills": [
         "Node",
@@ -98,7 +60,7 @@
       "id": "bde7"
     },
     {
-      "name": "Diego Rios",
+      "fullName": "Diego Rios",
       "title": "QA Tester",
       "skills": [
         "Testing"
@@ -112,7 +74,7 @@
       "id": "74c8"
     },
     {
-      "name": "Carlos",
+      "fullName": "Carlos",
       "title": "Fullstack Developer",
       "skills": [
         "JavaScript",
@@ -127,7 +89,7 @@
       "id": "c3b8"
     },
     {
-      "name": "Branner",
+      "fullName": "Branner",
       "title": "UI Designer",
       "skills": [
         "Figma"
