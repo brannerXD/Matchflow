@@ -2,7 +2,7 @@
   "users": [
     {
       "id": "ee55",
-      "fullName": "Diego Morales",
+      "name": "Diego Morales",
       "email": "email@email.com",
       "password": "123",
       "role": "candidate",
@@ -10,7 +10,7 @@
     },
     {
       "id": "12a2",
-      "fullName": "Mc'Donalds",
+      "name": "Mc'Donalds",
       "email": "uwu@uwu.com",
       "password": "123",
       "role": "company",
@@ -18,7 +18,7 @@
     },
     {
       "id": "22c6",
-      "fullName": "Riwi",
+      "name": "Riwi",
       "email": "riwi@mail.com",
       "password": "123",
       "role": "company",
@@ -27,7 +27,7 @@
     },
     {
       "id": "83f4",
-      "fullName": "Vero Martinez",
+      "name": "Vero Martinez",
       "email": "vero@mail.com",
       "password": "123",
       "role": "candidate",
@@ -37,7 +37,7 @@
   ],
   "candidates": [
     {
-      "fullName": "sofia",
+      "name": "Sofia Perez",
       "title": "Frontend Developer",
       "skills": [
         "HTML",
@@ -50,10 +50,11 @@
         "email": "sofi@mail.com",
         "phone": "+57 3096584212"
       },
-      "id": "ac65"
+      "id": "ac65",
+      "description":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, ullam ratione aliquam exercitationem voluptatum facilis dolore eius porro numquam consectetur laborum, quaerat id eum aspernatur nemo, fugiat aperiam eos odio."
     },
     {
-      "fullName": "Juan Felipe",
+      "name": "Juan Felipe",
       "title": "Backend Developer",
       "skills": [
         "Node",
@@ -69,7 +70,7 @@
       "id": "bde7"
     },
     {
-      "fullName": "Diego Rios",
+      "name": "Diego Rios",
       "title": "QA Tester",
       "skills": [
         "Testing"
@@ -80,10 +81,11 @@
         "email": "diego@mail.com",
         "phone": "+57 3096482078"
       },
-      "id": "74c8"
+      "id": "74c8",
+      "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, autem enim natus reprehenderit expedita aliquam quae sit, voluptatibus ut quia, suscipit possimus blanditiis iusto beatae odio? Dolores excepturi dolor fugiat!"
     },
     {
-      "fullName": "Carlos",
+      "name": "Carlos",
       "title": "Fullstack Developer",
       "skills": [
         "JavaScript",
@@ -98,7 +100,7 @@
       "id": "c3b8"
     },
     {
-      "fullName": "Branner",
+      "name": "Branner",
       "title": "UI Designer",
       "skills": [
         "Figma"

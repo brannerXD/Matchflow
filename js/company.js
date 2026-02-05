@@ -26,20 +26,18 @@ async function loadCandidates() {
     .forEach((c) => {
       const li = document.createElement("li");
       li.innerHTML = `
-        ${c.name} - ${c.skills}
-        <button onclick="reserveAndMatch(${c.id})" class="btn btn-sm btn-danger">
-            Reservar y hacer Match
-        </button>
-            `;
+
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <h5 class="card-title">${c.name}</h5>
+          <h6 class="card-subtitle mb-2">${c.title}</h6>
+          <p class="card-text">${c.description}</p>
+          <button href="#" class="btn btn-sm btn-reserve">Reserve</button>
+          <button href="#" class="btn btn-sm btn-match">Match</button>
+        </div>
+      </div>`
+
       ul.appendChild(li);
-
-      const btnReserve = document.createElement("button");
-      const btnMatch = document.createElement("button");
-      btnReserve.classList.add("btn btn-sm btn-danger");
-      btnMatch.classList.add("btn btn-sm btn-success");
-
-      li.appendChild(btnEdit);
-      li.appendChild(btnDelete);
     });
 }
 

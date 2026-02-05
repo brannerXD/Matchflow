@@ -33,6 +33,11 @@ main{
   width: 100%;
 }
 
+.card{
+    background-color: #312d2d91;
+    color: #ccc;
+}
+
 .main-card{
     width:100%;
     padding:40px;
@@ -123,6 +128,30 @@ h2,h3,h5{
     background:#c59b2e;
 }
 
+.btn-reserve{
+    background:#413b3bd8;
+    border:none;
+    color:#ffffff;
+}
+
+.btn-reserve:hover{
+    background:#413b3bd8;
+    border:none;
+    color:#000000;
+}
+
+.btn-match{
+    background:#d4af37;
+    border:none;
+    color:#ffffff;
+}
+
+.btn-match:hover{
+    background:#d4af37;
+    border:none;
+    color:#000000;
+}
+
 .btn-warning{
     background:transparent;
     border:1px solid #d4af37;
@@ -161,4 +190,6 @@ ul{
 li{
     padding:10px 0;
     border-bottom:1px solid rgba(212,175,55,0.2);
+    display: flex;
+
 }
