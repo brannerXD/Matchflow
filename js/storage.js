@@ -38,6 +38,25 @@ export async function saveCandidate(candidate) {
     }
 }
 
+export async function saveCompany(company) {
+    try {
+        const response = await fetch(`${API_URL}/companies`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(company)
+        });
+
+        const responseData = await response.json();
+        console.log('Success:', responseData);
+        return responseData;
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 export async function verifyUser(user) {
     try {
         const response = await fetch(`${API_URL}/users`); // Await the response

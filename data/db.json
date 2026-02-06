@@ -8,23 +8,9 @@
       "role": "candidate"
     },
     {
-      "id": "12a2",
+      "id": "323b",
       "name": "Mc'Donalds",
-      "email": "uwu@uwu.com",
-      "password": "123",
-      "role": "company"
-    },
-    {
-      "id": "ecff",
-      "name": "SOrnero",
-      "email": "sorne@email.com",
-      "password": "123",
-      "role": "candidate"
-    },
-    {
-      "id": "adad",
-      "name": "meloski",
-      "email": "melo@email.com",
+      "email": "company@email.com",
       "password": "123",
       "role": "company"
     }
@@ -50,14 +36,12 @@
   ],
   "companies": [
     {
-      "name": "Riwi",
-      "industry": "Software",
-      "id": "b237"
-    },
-    {
-      "name": "DataForge",
-      "industry": "Data",
-      "id": "131b"
+      "id": "323b",
+      "name": "Mc'Donalds",
+      "email": "company@email.com",
+      "industry": "",
+      "description": "",
+      "plan": "free"
     }
   ],
   "jobs": [
