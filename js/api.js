@@ -1,4 +1,5 @@
-const API = "http://localhost:3000";
+export const API_URL = "http://localhost:3000";
+
 
 async function apiGet(path){
     const res = await fetch(API + path);

@@ -37,43 +37,79 @@ function renderMatches(matches, candidates, companies) {
     const tr = document.createElement("tr");
 
     tr.innerHTML = `
-      <td>${company ? company.name : match.companyId}</td>
-      <td>${match.jobOfferId}</td>
-      <td>
-        ${candidate
-        ? `${candidate.name} — ${candidate.title}`
-        : match.candidateId
-      }
-      </td>
-      <td>
-        <select class="form-select form-select-sm status-select ${match.status}"
-          data-id="${match.id}">
-          <option value="pending" ${match.status === "pending" ? "selected" : ""}>Pending</option>
-          <option value="contacted" ${match.status === "contacted" ? "selected" : ""}>Contacted</option>
-          <option value="interview" ${match.status === "interview" ? "selected" : ""}>Interview</option>
-          <option value="hired" ${match.status === "hired" ? "selected" : ""}>Hired</option>
-          <option value="discarded" ${match.status === "discarded" ? "selected" : ""}>Discarded</option>
-        </select>
-      </td>
-      <td class="d-flex justify-content-center align-content-center gap-2">
-        <button class="btn btn-outline-danger btn-sm delete-btn"
-          data-id="${match.id}">
-          Delete
-        </button>
-        ${match.status === "contacted"
-        ?
-        `<a
-              class=""
+  <td class="fw-semibold">
+    ${company ? company.name : `Company #${match.companyId}`}
+  </td>
+
+  <td>
+    <span class="badge bg-secondary">
+      Offer ${match.jobOfferId}
+    </span>
+  </td>
+
+  <td>
+    ${
+      candidate
+        ? `
+          <div class="d-flex flex-column">
+            <span class="fw-semibold">${candidate.name}</span>
+            <small class="text-muted">${candidate.title}</small>
+          </div>
+        `
+        : `<span>ID ${match.candidateId}</span>`
+    }
+  </td>
+
+  <td>
+    <select
+      class="form-select form-select-sm status-select status-${match.status}"
+      data-id="${match.id}"
+    >
+      <option value="pending" ${match.status === "pending" ? "selected" : ""}>
+        Pending
+      </option>
+      <option value="contacted" ${match.status === "contacted" ? "selected" : ""}>
+        Contacted
+      </option>
+      <option value="interview" ${match.status === "interview" ? "selected" : ""}>
+        Interview
+      </option>
+      <option value="hired" ${match.status === "hired" ? "selected" : ""}>
+        Hired
+      </option>
+      <option value="discarded" ${match.status === "discarded" ? "selected" : ""}>
+        Discarded
+      </option>
+    </select>
+  </td>
+
+  <td class="text-center">
+    <div class="d-flex justify-content-center gap-2">
+      <button
+        class="btn btn-outline-danger btn-sm delete-btn"
+        data-id="${match.id}"
+        title="Delete match"
+      >Delete
+      </button>
+
+      ${
+        match.status === "contacted"
+          ? `
+            <a
               href="https://wa.me/"
               target="_blank"
+              class="btn btn-success btn-sm"
+              title="Contact via WhatsApp"
             >
-              <i class="fa-brands fa-whatsapp fs-1 rounded-circle whatsapp"></i>
-            </a>`
-        :
-        ""
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          `
+          : ""
       }
-      </td>
-    `;
+    </div>
+  </td>
+`;
+
 
     tableBody.appendChild(tr);
   });

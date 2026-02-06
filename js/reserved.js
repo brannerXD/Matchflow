@@ -1,65 +1,16 @@
-const API_URL = "http://localhost:3000";
+import { API_URL } from "./api.js";
 
-// Mock sesión
 const isLogged = true;
 const currentUser = {
   role: "company",
   companyId: "4401",
   plan: "Free"
 };
-// PLAN AND RESERVATIONS
-const planLimits = {
-  "Free" : 1,
-  "Bussines": 3,
-  "Enterprise" : 6,
-}
 
 let candidates = [];
 let reservations = [];
 
-
-const container = document.querySelector(".candidates-grid");
-
-async function reserveNewCandidates(candidateId) {
-  try {
-    // Endpoint
-    const resp = await fetch(`${API_URL}/reservations`);
-    const allReservations = await resp.json();
-
-    // Count reservations 
-    const activeReservationsCount = allReservations.filter(r => 
-      r.active && r.companyId === currentUser.companyId
-    ).length;
-
-    // reservations Limit 
-    const userLimit = planLimits[currentUser.plan] || 0;
-
-    if (activeReservationsCount >= userLimit) {
-      alert(`Límite excedido: Tu plan ${currentUser.plan} solo permite ${userLimit} reserva(s) activa(s).`);
-      return;
-    }
-
-    const newReservation = {
-      companyId: currentUser.companyId,
-      candidateId: candidateId,
-      active: true,
-      date: new Date().toISOString()
-    };
-
-    await fetch(`${API_URL}/reservations`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newReservation)
-    });
-
-    alert('Candidato Reservado con exito');
-    loadReservedCandidates();
-  } catch (error) {
-    console.error("Error al procesar la reserva:", error)
-  }
-}
-
-
+const container = document.getElementById("reservationsTableBody");
 
 async function loadReservedCandidates() {
   try {
@@ -79,16 +30,13 @@ async function loadReservedCandidates() {
 
 function getReservedCandidates() {
   const myReservations = reservations.filter(
-    r =>
-      r.active &&
-      r.companyId === currentUser.companyId
+    r => r.active && r.companyId === currentUser.companyId
   );
 
   return candidates.filter(c =>
     myReservations.some(r => r.candidateId === c.id)
   );
 }
-
 
 async function releaseReservation(candidateId) {
   const reservation = reservations.find(
@@ -109,47 +57,46 @@ async function releaseReservation(candidateId) {
   loadReservedCandidates();
 }
 
-
 function renderReservedCandidates() {
+  if (!container) return;
+  
   container.innerHTML = "";
 
   if (!isLogged || currentUser.role !== "company") {
-    container.innerHTML = "<p>No autorizado</p>";
+    container.innerHTML = `<tr><td colspan="4">No autorizado</td></tr>`;
     return;
   }
 
-
   const reservedList = getReservedCandidates();
-  
 
-  const myReservedIds = reservations
-    .filter(r => r.active && r.companyId === currentUser.companyId)
-    .map(r => r.candidateId);
+  if (reservedList.length === 0) {
+    container.innerHTML = `<tr><td colspan="4">No tienes reservas activas</td></tr>`;
+    return;
+  }
 
+  reservedList.forEach(c => {
+    const tr = document.createElement("tr");
 
-  candidates.forEach(c => {
-    const isAlreadyReservedByMe = myReservedIds.includes(c.id);
-    
-    const card = document.createElement("div");
-    card.className = "candidate-card";
-
-    card.innerHTML = `
-      <h3>${c.name}</h3>
-      <p>${c.title}</p>
-      <p>${c.skills.join(", ")}</p>
-
-      ${isAlreadyReservedByMe 
-        ? `<button class="btn btn-secondary" onclick="releaseReservation('${c.id}')">Liberar</button>`
-        : `<button class="btn btn-primary" onclick="reserveNewCandidates('${c.id}')">Reservar</button>`
-      }
+    tr.innerHTML = `
+      <td>${c.name}</td>
+      <td>${c.title}</td>
+      <td>${c.skills.join(", ")}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-danger" data-id="${c.id}">
+          Liberar
+        </button>
+      </td>
     `;
 
-    container.appendChild(card);
+    tr.querySelector("button").addEventListener("click", () =>
+      releaseReservation(c.id)
+    );
+
+    container.appendChild(tr);
   });
 }
 
-
-window.reserveNewCandidates = reserveNewCandidates;
-window.releaseReservation = releaseReservation;
+// ⬅️ EXPONER LA FUNCIÓN GLOBALMENTE
+window.loadReservedCandidates = loadReservedCandidates;
 
 document.addEventListener("DOMContentLoaded", loadReservedCandidates);

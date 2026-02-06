@@ -66,7 +66,7 @@
       "name": "Miel de Maple",
       "email": "miel@email.com",
       "title": "QA Jr",
-      "description": "Amazing description",
+      "description": "hola",
       "skills": [
         "python",
         "sql",
@@ -82,7 +82,7 @@
       "name": "Morita Bonita",
       "email": "morita@email.com",
       "title": "Full-Stack Developer",
-      "description": "Amazing description",
+      "description": "soy el mejor",
       "skills": [
         "html",
         "css",
@@ -124,7 +124,7 @@
       "email": "riwi@mail.com",
       "industry": "Software",
       "description": "This is the description",
-      "plan": "enterprise"
+      "plan": "free"
     }
   ],
   "jobs": [
@@ -171,12 +171,28 @@
       "id": "MdO57eH"
     }
   ],
-  "matches": [],
+  "matches": [
+    {
+      "id": "6751",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "candidateId": "e6g5",
+      "status": "pending"
+    },
+    {
+      "id": "f98b",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "candidateId": "e345",
+      "status": "pending"
+    }
+  ],
   "reservations": [
     {
       "candidateId": "ee55",
       "companyId": "323b",
-      "status": "active"
+      "status": "active",
+      "id": "89ad"
     },
     {
       "id": "3584",
@@ -261,6 +277,22 @@
       "companyId": "4401",
       "jobOfferId": "e829",
       "active": false
+    },
+    {
+      "id": "a89d",
+      "candidateId": "e6g5",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "date": "2026-02-06T22:43:45.162Z"
+    },
+    {
+      "id": "d4bf",
+      "candidateId": "e6g5",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "date": "2026-02-06T22:45:53.362Z"
     }
   ]
 }
