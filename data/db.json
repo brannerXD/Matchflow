@@ -128,25 +128,11 @@
   ],
   "matches": [
     {
-      "id": "573f",
       "companyId": "4401",
       "jobOfferId": "e829",
       "candidateId": "28g4",
-      "status": "pending"
-    },
-    {
-      "id": "ec44",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "candidateId": "28g4",
-      "status": "pending"
-    },
-    {
-      "id": "135a",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "candidateId": "29c4",
-      "status": "pending"
+      "status": "pending",
+      "id": 1
     }
   ],
   "reservations": [
@@ -179,39 +165,81 @@
       "active": false
     },
     {
-      "id": "3277",
       "candidateId": "29c4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": false
+      "active": false,
+      "id": "PZtvEcg"
     },
     {
-      "id": "f7d4",
       "candidateId": "28g4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": false
+      "active": false,
+      "id": "VKv0WNG"
     },
     {
-      "id": "d321",
-      "candidateId": "28g4",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "active": false
-    },
-    {
-      "id": "55bc",
-      "candidateId": "28g4",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "active": false
-    },
-    {
-      "id": "e382",
       "candidateId": "29c4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": false
+      "active": false,
+      "id": "ATAojls"
+    },
+    {
+      "candidateId": "28g4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "id": "Z-M54Wt"
+    },
+    {
+      "candidateId": "29c4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "id": "v-3DQka"
+    },
+    {
+      "candidateId": "28g4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "id": "mZBsMc7"
+    },
+    {
+      "candidateId": "29c4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "id": "1hkahwp"
+    },
+    {
+      "companyId": "4401",
+      "candidateId": "29c4",
+      "active": false,
+      "date": "2026-02-05T22:36:10.790Z",
+      "id": "IYdaGzN"
+    },
+    {
+      "candidateId": "28g4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "id": "HPp1As7"
+    },
+    {
+      "companyId": "4401",
+      "candidateId": "29c4",
+      "active": false,
+      "date": "2026-02-05T22:36:40.286Z",
+      "id": "B_MWYrJ"
+    },
+    {
+      "companyId": "4401",
+      "candidateId": "28g4",
+      "active": true,
+      "date": "2026-02-05T22:38:47.063Z",
+      "id": "UICI8Te"
     }
   ]
 }
