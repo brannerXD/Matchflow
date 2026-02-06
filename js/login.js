@@ -1,45 +1,61 @@
 import * as storage from "./storage.js";
-import * as session from "./session.js"
+import * as session from "./session.js";
 
-// Protect the route so no logged user can go to log in again
-document.addEventListener("DOMContentLoaded", async () => {
-    let loggedUser = session.getSession()
+// Evita que un usuario logueado vuelva al login
+document.addEventListener("DOMContentLoaded", () => {
+    const loggedUser = session.getSession();
+
     if (loggedUser) {
-        window.location.replace("../index.html")
+        if (loggedUser.role === "candidate") {
+            window.location.replace("./pages/candidate.html");
+        } else if (loggedUser.role === "company") {
+            window.location.replace("./pages/company.html");
+        }
     }
-})
+});
 
-document.getElementById("loginButton").addEventListener("click", async (e) => {
-    e.preventDefault()
-    await login()
-})
+// Evento botón login
+document.getElementById("loginButton").addEventListener("click", (e) => {
+    e.preventDefault();
+    login();
+});
 
 async function login() {
     const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const passwordInput = document.getElementById("password");
+    const password = passwordInput.value.trim();
 
-    if(!email || !password){
+    if (!email || !password) {
         alert("Please fill all fields");
         return;
     }
 
-    const user = await storage.verifyUser({email: email})
+    // Busca usuario en json-server
+    const user = await storage.verifyUser({ email });
 
-    if (user.password !== password) {
-        alert("Invalid credentials")
-        password.value = ""
+    if (!user) {
+        alert("User not found");
         return;
     }
 
+    if (user.password !== password) {
+        alert("Invalid credentials");
+        passwordInput.value = "";
+        return;
+    }
+
+    // Guarda sesión COMPLETA (CLAVE)
     session.saveSession({
         id: user.id,
         fullName: user.fullName,
+        email: user.email,
         role: user.role
     });
 
-    if(user.role === "candidate"){
-        window.location.replace("./../pages/candidate.html")
+    // Redirección por rol
+    if (user.role === "candidate") {
+        window.location.href = "./pages/candidate.html";
     } else {
-        window.location.replace("./../pages/company.html")
+        window.location.href = "./pages/company.html";
     }
 }
