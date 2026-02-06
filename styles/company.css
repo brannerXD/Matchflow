@@ -82,7 +82,18 @@ h2,h3,h5{
     color:#d4af37;
 }
 
+
+
 .form-control, select{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(212,175,55,0.35);
+    color:#fff;
+    margin-bottom:15px;
+    padding:12px;
+    border-radius:10px;
+}
+
+.section .badge{
     background:rgba(255,255,255,0.08);
     border:1px solid rgba(212,175,55,0.35);
     color:#fff;

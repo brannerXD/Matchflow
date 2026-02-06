@@ -28,12 +28,37 @@
         </div>
 
         <div class="section">
-          <h5>Create Job Offer</h5>
-          <input id="jobTitle" class="form-control" placeholder="Job title" />
-          <button class="btn btn-success mt-2">
-            Create Job
-          </button>
+        <div class="d-flex w-100 g-4 justify-content-center">
+          <div>
+            <h5>Company Name</h5>
+            <input name="name" id="name" class="form-control" placeholder="Name">
+          </div>
+
+          <div>
+            <h5>Plan</h5>
+            <span class="badge rounded-pill text-bg-success">Free</span>
+          </div>
         </div>
+
+        <div>
+            <h5>Industry</h5>
+            <input name="industry" id="company-industry" class="form-control" placeholder="Industry as: Software, E-commerce, Food">
+        </div>
+
+        <div>
+            <h5>Description</h5>
+            <textarea style="resize: none;"
+                      class="form-control"
+                      id="company-description"
+                      rows="3"
+                      placeholder="About the company"
+            ></textarea>
+        </div>
+
+        <div class="btn-group form-outline mb-3 w-100">
+            <button id="updateCompanyProfile" class="btn btn-dark mt-2">Save Profile</button>
+        </div>
+    </div>
 
         <div class="section">
           <h5>Create Job Offer</h5>
