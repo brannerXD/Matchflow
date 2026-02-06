@@ -4,7 +4,7 @@ export function getSession() {
 }
 
 export function checkSession(loggedUser) {
-//   if (!loggedUser) {
-//     window.location.href = "./../index.html";
-//   }
+  if (!loggedUser) {
+    window.location.href = "./../index.html";
+  }
 }

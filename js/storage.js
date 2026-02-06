@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4001";
+const API_URL = "http://localhost:3000";
 
 //MF2
 export async function getCandidates() {

@@ -1,4 +1,4 @@
-/* const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:3000";
 const tableBody = document.getElementById("matchesTableBody");
 
 async function loadMatches() {
@@ -40,11 +40,10 @@ function renderMatches(matches, candidates, companies) {
       <td>${company ? company.name : match.companyId}</td>
       <td>${match.jobOfferId}</td>
       <td>
-        ${
-          candidate
-            ? `${candidate.fullName} — ${candidate.title}`
-            : match.candidateId
-        }
+        ${candidate
+        ? `${candidate.name} — ${candidate.title}`
+        : match.candidateId
+      }
       </td>
       <td>
         <select class="form-select form-select-sm status-select ${match.status}"
@@ -61,19 +60,18 @@ function renderMatches(matches, candidates, companies) {
           data-id="${match.id}">
           Delete
         </button>
-        ${
-          match.status === "contacted" 
-          ? 
-            `<a
+        ${match.status === "contacted"
+        ?
+        `<a
               class=""
               href="https://wa.me/"
               target="_blank"
             >
               <i class="fa-brands fa-whatsapp fs-1 rounded-circle whatsapp"></i>
             </a>`
-          : 
-            ""
-        }
+        :
+        ""
+      }
       </td>
     `;
 
@@ -87,7 +85,8 @@ function normalizePhone(phone) {
 }
 
 tableBody.addEventListener("change", async (e) => {
-  if (!e.target.classList.contains("status-select")) return;
+  if(!e.target.classList.contains("status-select"))
+    return;
 
   const matchId = e.target.dataset.id;
   const newStatus = e.target.value;
@@ -112,4 +111,3 @@ tableBody.addEventListener("click", async (e) => {
 });
 
 loadMatches();
- */

@@ -134,7 +134,7 @@ function renderReservedCandidates() {
     card.className = "candidate-card";
 
     card.innerHTML = `
-      <h3>${c.fullName}</h3>
+      <h3>${c.name}</h3>
       <p>${c.title}</p>
       <p>${c.skills.join(", ")}</p>
 

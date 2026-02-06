@@ -151,7 +151,7 @@ function renderCandidates(list) {
     card.className = "candidate-card";
 
     card.innerHTML = `
-    <h3>${c.fullName}</h3>
+    <h3>${c.name}</h3>
     <p class="candidate-role">${c.title}</p>
     <p class="candidate-skills">${c.skills.join(", ")}</p>
     
