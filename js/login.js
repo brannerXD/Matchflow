@@ -3,9 +3,13 @@ import * as session from "./session.js"
 
 // Protect the route so no logged user can go to log in again
 document.addEventListener("DOMContentLoaded", async () => {
-    let loggedUser = session.getSession()
-    if (loggedUser) {
-        window.location.replace("../index.html")
+    let loggedUser = session.getSession();
+      if (loggedUser) {
+        if (loggedUser.role !== "company") {
+            window.location.replace("./pages/candidate.html");
+        } else {
+            window.location.replace("./pages/company.html");
+        }
     }
 })
 
@@ -38,8 +42,8 @@ async function login() {
     });
 
     if(user.role === "candidate"){
-        window.location.replace("./pages/candidate.html")
+        window.location.replace("../pages/candidate.html")
     } else {
-        window.location.replace("./pages/company.html")
+        window.location.replace("../pages/company.html")
     }
 }

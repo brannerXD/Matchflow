@@ -8,11 +8,24 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (loggedUser.role !== "candidate") {
             window.location.replace("./pages/company.html")
         }
+    } else {
+        window.location.replace("./index.html")
     }
     await renderProfile()
-})
+    await renderOffers()
 
-document.getElementById("logOut").addEventListener("click", session.logout)
+    if (window.location.pathname === "/pages/candidate-plans.html") {
+        const planSection = document.querySelector(".panel");
+        planSection.addEventListener("click", async (event) => {
+            const newPlan = event.target.closest(".plan-card").dataset.id;
+            await changePlan(newPlan);
+        });
+    }
+});
+
+const candidateId = session.getSession().id;
+
+document.getElementById("logOut")?.addEventListener("click", session.logout)
 
 // async function render profile
 async function renderProfile() {
@@ -36,7 +49,7 @@ async function renderProfile() {
     }
 }
 
-document.getElementById("updateProfile").addEventListener("click", updateProfile)
+document.getElementById("updateProfile")?.addEventListener("click", updateProfile)
 
 async function updateProfile() {
     let id = session.getSession().id
@@ -62,7 +75,7 @@ async function updateProfile() {
     await renderProfile()
 }
 
-document.getElementById("openToWork").addEventListener("click", changeState)
+document.getElementById("openToWork")?.addEventListener("click", changeState)
 
 async function changeState() {
     let userId = session.getSession().id
@@ -78,3 +91,35 @@ async function changeState() {
 document.getElementById("planButton").addEventListener("click", () => {
     window.location.href = "./candidate-plans.html"
 })
+
+async function renderOffers() {
+  let jobOffers = await storage.getOffers();
+  const ul = document.getElementById("job-offers");
+  ul.innerHTML = "";
+
+  for (const offer of jobOffers) {
+    const companyFind = await storage.getCompanyById(offer.companyId);
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+        <div class="d-flex aling-items-center justify-content-between">
+          <h5 class="card-title primary-text fw-bold">${offer.title}</h5>
+          <div class="">
+            <p class="card-text mb-0">Company</p>
+            <p class="card-text primary-text">${companyFind.name}</p>
+          </div>
+        </div>
+          <p class="card-text">${offer.description}</p>
+        </div>
+      </div>`;
+
+      ul.appendChild(li);
+    }
+}
+
+async function changePlan(newPlan) {
+  await storage.updateCandidatePlan(candidateId, { plan: newPlan });
+  window.location.replace("./../pages/candidate.html");
+  await renderProfile();
+}
