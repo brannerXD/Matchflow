@@ -104,34 +104,12 @@
       "companyId": "4401"
     }
   ],
-  "matches": [],
-  "reservations": [
+  "matches": [
     {
-      "companyId": "4401",
-      "candidateId": "29c4",
-      "active": false,
-      "date": "2026-02-05T22:36:10.790Z",
-      "id": "IYdaGzN"
-    },
-    {
-      "companyId": "4401",
-      "candidateId": "29c4",
-      "active": false,
-      "date": "2026-02-05T22:36:40.286Z",
-      "id": "B_MWYrJ"
-    },
-    {
-      "id": "573f",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "candidateId": "28g4",
-      "status": "pending"
-    },
-    {
-      "id": "ec44",
-      "companyId": "4401",
-      "candidateId": "28g4",
-      "status": "pending",
+      "candidateId": "29c4",
+      "status": "contacted",
       "id": 1
     }
   ],
@@ -186,20 +164,18 @@
       "id": "qhW7_SH"
     },
     {
-      "id": "3277",
+      "id": "PZtvEcg",
       "candidateId": "29c4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": false,
-      "id": "PZtvEcg"
+      "active": false
     },
     {
-      "id": "55bc",
+      "id": "VKv0WNG",
       "candidateId": "28g4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": false,
-      "id": "VKv0WNG"
+      "active": false
     },
     {
       "id": "e382",
@@ -209,11 +185,10 @@
       "active": false
     },
     {
-      "id": "aae6",
+      "id": "ATAojls",
       "companyId": "4401",
       "candidateId": "29c4",
-      "active": false,
-      "id": "ATAojls"
+      "active": false
     },
     {
       "id": "7f13",
@@ -223,11 +198,10 @@
       "date": "2026-02-05T22:45:11.505Z"
     },
     {
-      "id": "8035",
+      "id": "Z-M54Wt",
       "companyId": "4401",
       "candidateId": "29c4",
-      "active": false,
-      "id": "Z-M54Wt"
+      "active": false
     },
     {
       "id": "5fc5",
@@ -237,51 +211,45 @@
       "active": false
     },
     {
-      "id": "1ed3",
+      "id": "v-3DQka",
       "companyId": "4401",
       "candidateId": "28g4",
-      "active": false,
-      "id": "v-3DQka"
+      "active": false
     },
     {
-      "id": "eb6c",
-      "candidateId": "28g4",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "active": false,
-      "id": "mZBsMc7"
-    },
-    {
-      "id": "e7cb",
-      "candidateId": "29c4",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "active": false,
-      "id": "1hkahwp"
-    },
-    {
-      "id": "b9a1",
-      "companyId": "4401",
-      "candidateId": "29c4",
-      "active": false,
-      "date": "2026-02-05T22:36:10.790Z",
-      "id": "IYdaGzN"
-    },
-    {
-      "id": "fd12",
+      "id": "mZBsMc7",
       "candidateId": "28g4",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": false,
-      "id": "HPp1As7"
+      "active": false
     },
     {
-      "id": "b42c",
+      "id": "1hkahwp",
+      "candidateId": "29c4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false
+    },
+    {
+      "id": "IYdaGzN",
       "companyId": "4401",
       "candidateId": "29c4",
       "active": false,
-      "date": "2026-02-05T22:36:40.286Z",
-      "id": "B_MWYrJ"
+      "date": "2026-02-05T22:36:10.790Z"
+    },
+    {
+      "id": "HPp1As7",
+      "candidateId": "28g4",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false
+    },
+    {
+      "id": "B_MWYrJ",
+      "companyId": "4401",
+      "candidateId": "29c4",
+      "active": false,
+      "date": "2026-02-05T22:36:40.286Z"
     },
     {
       "id": "8c89",
@@ -291,11 +259,17 @@
       "active": false
     },
     {
-      "id": "4687",
+      "id": "UICI8Te",
       "candidateId": "28g4",
       "active": true,
-      "date": "2026-02-05T22:38:47.063Z",
-      "id": "UICI8Te"
+      "date": "2026-02-05T22:38:47.063Z"
+    },
+    {
+      "companyId": "4401",
+      "candidateId": "28g4",
+      "active": false,
+      "date": "2026-02-06T17:44:57.841Z",
+      "id": "XH7uSo7"
     }
   ]
 }
