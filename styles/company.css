@@ -237,3 +237,7 @@ form{
   flex-direction: column;
   gap:0.9rem
 }
+
+.primary-text {
+    color: #d4af37;
+}

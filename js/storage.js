@@ -214,6 +214,17 @@ export async function getReservations() {
   }
 }
 
+export async function getOffers() {
+    try {
+        const response = await fetch(`${API_URL}/jobs`); // Await the response
+        const data = await response.json(); // Await the JSON parsing
+        
+        return data
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
 export async function getOfferseByCompanyId(companyId) {
     try {
         const response = await fetch(`${API_URL}/jobs`); // Await the response

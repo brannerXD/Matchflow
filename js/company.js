@@ -18,6 +18,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (loggedUser.role !== "company") {
       window.location.replace("./pages/candidate.html");
     }
+  } else {
+    window.location.replace("./index.html");
   }
 
   if (window.location.pathname === "/pages/company.html") {

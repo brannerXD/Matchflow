@@ -38,8 +38,8 @@ async function login() {
     });
 
     if(user.role === "candidate"){
-        window.location.replace("./../pages/candidate.html")
+        window.location.replace("../pages/candidate.html")
     } else {
-        window.location.replace("./../pages/company.html")
+        window.location.replace("../pages/company.html")
     }
 }
