@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile - CRUDZASO MatchFlow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../css/styles.css">
+</head>
+
+<body class="bg-dark">
+    <header>
+        <nav class="navbar bg-light p-3 mb-5 container-fluid">
+            <div class="container d-flex">
+                <div class="logo-container d-flex align-items-center">
+                    <div class="logo-icon">
+                        <img class="img-fluid" src="./../media/icon.png" alt="CRUDZASO Logo">
+                    </div>
+                    <h1 class="brand-name">CRUDZASO <span class="brand-subtitle">- MatchFlow</span></h1>
+                </div>
+
+                <div class="nav-links">
+                    <a href="#">Find employees</a>
+                    <a href="#" class="select">Profile</a>
+                    <button class="btn btn-danger align-items-center">
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container main-content">
+        <section class="profile-layout">
+            <!-- Company Info Card -->
+            <div class="company-info-card bg-light p-4 rounded shadow-sm">
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h2 id="company-name" class="company-title">Microsoft</h2>
+                    </div>
+                </div>
+                <div class="row stats-row">
+                    <div class="col-6">
+                        <div class="stat-item">
+                            <span class="stat-label">Employees:</span>
+                            <span class="stat-value">0</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-item">
+                            <span class="stat-label">Works published:</span>
+                            <span class="stat-value" id="works-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Works Section -->
+            <div class="works-section">
+                <!-- Create Work Form -->
+                <div class="create-work-card bg-light p-4 rounded shadow-sm mb-4">
+                    <h2 class="section-title mb-4">Publish what you need!</h2>
+                    <form id="job-form">
+                        <div class="mb-3">
+                            <label for="jobTitle" class="form-label fw-semibold">Title</label>
+                            <input id="jobTitle" type="text" class="form-control" 
+                                placeholder="Write what do you need" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="jobDescription" class="form-label fw-semibold">Description</label>
+                            <textarea id="jobDescription" class="form-control description-field" rows="4"
+                                placeholder="Describe the job" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle me-2" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                            </svg>
+                            Post the job
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Works Published List -->
+                <div class="works-published-section">
+                    <h3 class="section-title mb-3">Published Works</h3>
+                    <div id="works-list" class="works-list">
+                        <!-- Los trabajos se cargarán aquí dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script type="module" src="./../js/company_profile.js"></script>
+</body>
+
+</html>
