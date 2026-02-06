@@ -1,101 +1,45 @@
-// login.js
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
-    const fullName = document.getElementById('username');
-    const email = document.getElementById('email');
-    const role = document.getElementById('role');
+import * as storage from "./storage.js";
+import * as session from "./session.js"
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Limpiar mensajes de error previos
-        clearErrors();
+// Protect the route so no logged user can go to log in again
+document.addEventListener("DOMContentLoaded", async () => {
+    let loggedUser = session.getSession()
+    if (loggedUser) {
+        window.location.replace("../index.html")
+    }
+})
 
-        let isValid = true;
+document.getElementById("loginButton").addEventListener("click", async (e) => {
+    e.preventDefault()
+    await login()
+})
 
-        // Validar campos vacíos
-        if (fullName.value.trim() === '') {
-            showError(fullName, 'Ingresa tu nombre completo');
-            isValid = false;
-        }
+async function login() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-        if (email.value.trim() === '') {
-            showError(email, 'Ingresa tu email');
-            isValid = false;
-        }
+    if(!email || !password){
+        alert("Please fill all fields");
+        return;
+    }
 
-        if (!isValid) return;
+    const user = await storage.verifyUser({email: email})
 
-        // Obtener usuario registrado del localStorage
-        const storedUser = localStorage.getItem('currentUser');
+    if (user.password !== password) {
+        alert("Invalid credentials")
+        password.value = ""
+        return;
+    }
 
-        if (!storedUser) {
-            showGeneralError('No hay una cuenta registrada. Por favor regístrate primero.');
-            return;
-        }
-
-        const userData = JSON.parse(storedUser);
-
-        // Verificar credenciales
-        if (email.value.trim() === userData.email && 
-            fullName.value.trim() === userData.fullName &&
-            role.value === userData.role) {
-            
-            // Login exitoso
-            showSuccess();
-            
-            // Actualizar último login
-            userData.lastLogin = new Date().toISOString();
-            localStorage.setItem('currentUser', JSON.stringify(userData));
-            
-            // Redirigir después de 1 segundo
-            setTimeout(() => {
-                window.location.href = 'menu.html';
-            }, 1000);
-        } else {
-            // Credenciales incorrectas
-            showGeneralError('Credenciales incorrectas. Verifica tu nombre, email y rol.');
-        }
+    session.saveSession({
+        id: user.id,
+        fullName: user.fullName,
+        role: user.role
     });
 
-    function showError(input, message) {
-        input.classList.add('is-invalid');
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'invalid-feedback';
-        errorDiv.textContent = message;
-        input.parentElement.appendChild(errorDiv);
+    if(user.role === "candidate"){
+        window.location.replace("./../pages/candidate.html")
+    } else {
+        window.location.replace("./../pages/company.html")
     }
-
-    function showGeneralError(message) {
-        // Remover error previo si existe
-        const existingError = form.querySelector('.alert-danger');
-        if (existingError) existingError.remove();
-
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'alert alert-danger mt-3';
-        errorDiv.textContent = message;
-        form.appendChild(errorDiv);
-    }
-
-    function clearErrors() {
-        const inputs = [fullName, email, role];
-        inputs.forEach(input => {
-            input.classList.remove('is-invalid');
-            const errorDiv = input.parentElement.querySelector('.invalid-feedback');
-            if (errorDiv) {
-                errorDiv.remove();
-            }
-        });
-
-        // Remover alertas generales
-        const alerts = form.querySelectorAll('.alert');
-        alerts.forEach(alert => alert.remove());
-    }
-
-    function showSuccess() {
-        const successDiv = document.createElement('div');
-        successDiv.className = 'alert alert-success mt-3';
-        successDiv.textContent = '¡Login exitoso! Bienvenido...';
-        form.appendChild(successDiv);
-    }
-});
+}
