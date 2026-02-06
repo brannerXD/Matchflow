@@ -2,9 +2,13 @@ import * as storage from "./storage.js"
 import * as session from "./session.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    let loggedUser = session.getSession()
+    let loggedUser = session.getSession();
     if (loggedUser) {
-        window.location.replace("../index.html")
+        if (loggedUser.role !== "company") {
+            window.location.replace("./pages/candidate.html");
+        } else {
+            window.location.replace("./pages/company.html");
+        }
     }
 })
 
