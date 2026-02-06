@@ -57,7 +57,7 @@
         "json-server",
         "js"
       ],
-      "plan": "pro1",
+      "plan": "free",
       "openToWork": true,
       "phone": "3120002222"
     },
@@ -176,7 +176,8 @@
     {
       "candidateId": "ee55",
       "companyId": "323b",
-      "status": "active"
+      "status": "active",
+      "id": "beda"
     }
   ]
 }

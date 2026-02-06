@@ -254,3 +254,20 @@ export async function saveJobOffer(jobOffer) {
         console.error('Error:', error);
     }
 }
+
+export async function updateCandidatePlan(candidateId, newPlan) {
+    try {
+        const respuesta = await fetch(`${API_URL}/candidates/${candidateId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPlan)
+        });
+
+        const json = await respuesta.json();
+        console.log('Company plan updated:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
