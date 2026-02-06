@@ -153,3 +153,31 @@ export async function updateState(userId, newState) {
         console.error('Error:', error);
     }
 }
+
+export async function getCompanyById(companyId) {
+    try {
+        const response = await fetch(`${API_URL}/companies/${companyId}`); // Await the response
+        const data = await response.json(); // Await the JSON parsing
+
+        return data
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+export async function updateCompany(companyId, newData) {
+    try {
+        const respuesta = await fetch(`${API_URL}/companies/${companyId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newData)
+        });
+
+        const json = await respuesta.json();
+        console.log('Company info updated:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}

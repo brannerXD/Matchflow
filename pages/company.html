@@ -22,27 +22,27 @@
       <div class="panel">
         <div class="header-bar">
           <h4>Company Profile</h4>
-          <button id="company-plans" class="btn btn-outline-danger">
+          <button id="company-plan" class="btn btn-outline-danger">
             Upgrade plan
           </button>
         </div>
 
         <div class="section">
-        <div class="d-flex w-100 g-4 justify-content-center">
-          <div>
+        <div class="row d-flex justify-content-between">
+          <div class="col-md-10">
             <h5>Company Name</h5>
-            <input name="name" id="name" class="form-control" placeholder="Name">
+            <input id="company-name" class="form-control" placeholder="Name">
           </div>
 
-          <div>
+          <div class="col-md-2">
             <h5>Plan</h5>
-            <span class="badge rounded-pill text-bg-success">Free</span>
+            <span id="plan-badge" class="badge rounded-pill-custom">Free</span>
           </div>
         </div>
 
         <div>
             <h5>Industry</h5>
-            <input name="industry" id="company-industry" class="form-control" placeholder="Industry as: Software, E-commerce, Food">
+            <input id="company-industry" class="form-control" placeholder="Industry as: Software, E-commerce, Food">
         </div>
 
         <div>

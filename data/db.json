@@ -13,6 +13,13 @@
       "email": "company@email.com",
       "password": "123",
       "role": "company"
+    },
+    {
+      "id": "3h5b",
+      "name": "Riwi",
+      "email": "riwi@mail.com",
+      "password": "123",
+      "role": "company"
     }
   ],
   "candidates": [
@@ -42,6 +49,14 @@
       "industry": "",
       "description": "",
       "plan": "free"
+    },
+    {
+      "id": "3h5b",
+      "name": "Riwi",
+      "email": "riwi@mail.com",
+      "industry": "Software",
+      "description": "This is the description",
+      "plan": "free"
     }
   ],
   "jobs": [
@@ -50,7 +65,7 @@
       "description": "HTML, CSS, JS",
       "status": "open",
       "id": "4591",
-      "companyId":"22c6"
+      "companyId": "22c6"
     },
     {
       "title": "QA Jr",
