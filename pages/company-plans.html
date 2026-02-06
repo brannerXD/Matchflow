@@ -21,51 +21,53 @@
 
         <div class="row justify-content-around">
             <div class="section col-lg-3 col-md-12">
-                <div class ="plan-card h-100 text-center rounded-3 d-flex flex-column justify-content-between">
+                <div data-id="free" class ="plan-card h-100 text-center rounded-3 d-flex flex-column justify-content-between">
                     <h3 class="mb-3">Free Company</h3>
                     <p class="text-dark-emphasis mb-4">Included with your registration</p>
                     <div class="price mb-4">
                         <div class="price-highlight">$0<span class="price-period">/month</span></div>
                     </div>
                     <ul class="feature-list list-unstyled mb-4">
-                        <li><i class="bi bi-check text-success me-2"></i>View candidates only according to the default MatchFlow rules</li>
-                        <li><i class="bi bi-check text-success me-2"></i>Cannot bypass reservation restrictions</li>
-                        <li><i class="bi bi-check text-success me-2"></i>Limited filtering capabilities</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Basic access to candidates based on MatchFlow’s default rules</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Limited filtering for simple searches</li>
+                        <li><i class="bi bi-check text-success me-2"></i>No access to reserved candidates</li>
                     </ul>
-                    <button class="btn btn-outline-success-custom w-100">Get started</button>
+                    <button id="free-plan" class="btn btn-outline-success-custom w-100">Get started</button>
                 </div>
             </div>
 
             <div class="section col-lg-3 col-md-12">
-                <div class="plan-card h-100 text-center rounded-3 d-flex flex-column justify-content-between">
+                <div data-id="business" class="plan-card h-100 text-center rounded-3 d-flex flex-column justify-content-between">
                     <span class="recommended-badge">RECOMMENDED</span>
                     <h3 class="mb-3">Business Company</h3>
                     <div class="price mb-4">
                         <div class="price-highlight">$18<span class="price-period">/month</span></div>
                     </div>
                     <ul class="feature-list list-unstyled mb-4">
-                        <li><i class="bi bi-check text-success me-2"></i>View enhanced candidate visibility</li>
-                        <li><i class="bi bi-check text-success me-2"></i>Apply advanced filters, including: custom skill-based filtering</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Enhanced visibility of relevant candidates</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Advanced skill-based and criteria filtering</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Increased search and match limits</li>
                     </ul>
-                    <button class="btn btn-success w-100">Get started</button>
+                    <button id="business-plan" class="btn btn-success w-100">Get started</button>
                 </div>
             </div>
 
             <div class="section col-lg-3 col-md-12">
-                <div class="plan-card h-100 text-center rounded-3 d-flex flex-column justify-content-between">
+                <div data-id="enterprise" class="plan-card h-100 text-center rounded-3 d-flex flex-column justify-content-between">
                     <h3 class="mb-3">Enterprise Company</h3>
                     <div class="price mb-4">
                         <div class="price-highlight">$29<span class="price-period">/month</span></div>
                     </div>
                     <ul class="feature-list list-unstyled mb-4">
-                        <li><i class="bi bi-check text-success me-2"></i>View all candidates, even if they are currently reserved by other companies</li>
-                        <li><i class="bi bi-check text-success me-2"></i>Filter candidates freely by skills and other attributes</li>
-                        <li><i class="bi bi-check text-success me-2"></i>Reservation rules still apply, but visibility is no longer restricted</li>
+                        <li><i class="bi bi-check text-success me-2"></i>View all candidates, even those reserved by other companies</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Free filtering by skills and multiple attributes</li>
+                        <li><i class="bi bi-check text-success me-2"></i>Unrestricted visibility (reservation rules still apply)</li>
                     </ul>
-                    <button class="btn btn-outline-success-custom w-100">Get started</button>
+                    <button id="enterprise-plan" class="btn btn-outline-success-custom w-100">Get started</button>
                 </div>
             </div>
         </div>
     </main>
+    <script type="module" src="./../js/company.js"></script>
   </body>
 </html>

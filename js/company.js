@@ -12,11 +12,20 @@ document.addEventListener("DOMContentLoaded", async () => {
             window.location.replace("./pages/candidate.html")
         }
     }
-    await renderProfile();
-    await loadCandidates();
+    
+    if (window.location.pathname === "/pages/company.html") {
+      await renderProfile();
+      await loadCandidates();
+    }else if (window.location.pathname === "/pages/company-plans.html"){
+      const planSection = document.querySelector('.panel');
+      planSection.addEventListener('click', async (event) => {
+        const newPlan = ((event.target.closest('.plan-card').dataset).id)
+        await changePlan(newPlan)
+      })
+    }
 })
 
-document.getElementById("logOut").addEventListener("click", session.logout)
+document.getElementById("logOut")?.addEventListener("click", session.logout)
 
 async function loadCandidates() {
   //MF2: getCandidates as new function
@@ -54,7 +63,7 @@ async function renderProfile() {
     document.getElementById("company-description").value = company.description || ""
 }
 
-document.getElementById("updateCompanyProfile").addEventListener("click", updateProfile)
+document.getElementById("updateCompanyProfile")?.addEventListener("click", updateProfile)
 
 async function updateProfile() {
     const newData = {
@@ -67,18 +76,14 @@ async function updateProfile() {
     await renderProfile()
 }
 
-companyPlan.addEventListener('click', () => {
+companyPlan?.addEventListener('click', () => {
   window.location.replace("./../pages/company-plans.html")
 })
 
-async function reserveAndMatch(candidateId) {
-  const jobs = await getData("jobOffers");
-  const companies = await getData("companies");
-
-  const jobId = jobs[jobs.length - 1].id;
-  const companyId = companies[companies.length - 1].id;
-
-  createMatch(companyId, jobId, candidateId);
+async function changePlan(newPlan) {
+    await storage.updateCompanyPlan(companyId,{plan: newPlan})
+    window.location.replace("./../pages/company.html")
+    await renderProfile()
 }
 
 

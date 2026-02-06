@@ -181,3 +181,20 @@ export async function updateCompany(companyId, newData) {
         console.error('Error:', error);
     }
 }
+
+export async function updateCompanyPlan(companyId, newPlan) {
+    try {
+        const respuesta = await fetch(`${API_URL}/companies/${companyId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPlan)
+        });
+
+        const json = await respuesta.json();
+        console.log('Company plan updated:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
