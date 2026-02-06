@@ -219,7 +219,6 @@ export async function getOfferseByCompanyId(companyId) {
         const response = await fetch(`${API_URL}/jobs`); // Await the response
         const data = await response.json(); // Await the JSON parsing
         
-        console.log(data);
         return data.filter(offer => offer.companyId === companyId)
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);

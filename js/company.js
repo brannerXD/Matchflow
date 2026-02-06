@@ -129,8 +129,7 @@ async function renderProfile() {
 
 async function renderOffers() {
   let jobOffers = await storage.getOfferseByCompanyId(companyId);
-  console.log(jobOffers)
-
+  
   const ul = document.getElementById("job-offers");
   ul.innerHTML = "";
 
@@ -142,8 +141,8 @@ async function renderOffers() {
         <div class="card-body">
           <h5 class="card-title">${offer.title}</h5>
           <p class="card-text">${offer.description}</p>
-          <button href="#" class="btn btn-sm btn-reserve">${offer.status.charAt(0).toUpperCase() + offer.status.slice(1)}</button>
-          <button href="#" class="btn btn-sm btn-match">Edit Offer</button>
+          <button href="#" class="btn btn-sm btn-match">${offer.status.charAt(0).toUpperCase() + offer.status.slice(1)}</button>
+          <button href="#" class="btn btn-sm btn-reserve">Edit Offer</button>
         </div>
       </div>`;
 
