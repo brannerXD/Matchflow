@@ -17,7 +17,7 @@ async function register() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const role = document.getElementById("role").value;
-    const fullName = document.getElementById("fullName").value;
+    const name = document.getElementById("name").value;
 
     if(!email || !password){
         alert("Please fill all fields");
@@ -31,14 +31,40 @@ async function register() {
     }
 
     await storage.saveUser({
-        fullName,
+        name,
         email,
         password,
         role,
-        openToWork: false,
-        plan: "free"
     })
 
+    let user = await storage.verifyUser({email: email})
+    if (user.role === "candidate") {
+        await storage.saveCandidate({
+            id: user.id,
+            name,
+            title: "",
+            email,
+            description: "",
+            skills: [],
+            plan: "free",
+            openToWork: true,
+            phone: ""
+        })
+    } else {
+        await storage.saveCompany({
+            id: user.id,
+            name,
+            email,
+            industry: "",
+            description: "",
+            plan: "free"
+        })
+    }
+
     alert("User registered successfully");
-    window.location.href = "./../index.html";
+    if (role === "candidate") {
+        window.location.replace("../pages/candidate.html")
+    } else {
+        window.location.replace("../pages/company.html")
+    }
 }

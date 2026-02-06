@@ -8,10 +8,11 @@
       "role": "candidate"
     },
     {
-      "name": "Riwi",
-      "email": "rwi@mail.com",
-      "id": "b237",
-      "password":"123"
+      "id": "323b",
+      "name": "Mc'Donalds",
+      "email": "company@email.com",
+      "password": "123",
+      "role": "company"
     }
   ],
   "candidates": [
@@ -35,12 +36,12 @@
   ],
   "companies": [
     {
-      "name": "Riwi",
-      "industry": "Software",
-      "email":"rwi@mail.com",
-      "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat facere ex animi nulla aspernatur reprehenderit sed, dicta nihil fugiat esse ea error doloribus, culpa rerum accusamus cupiditate tempore consectetur earum.",
-      "id": "b237",
-      "plan":"free"
+      "id": "323b",
+      "name": "Mc'Donalds",
+      "email": "company@email.com",
+      "industry": "",
+      "description": "",
+      "plan": "free"
     }
   ],
   "jobs": [

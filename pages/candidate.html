@@ -15,37 +15,72 @@
         <button id="logOut" class="btn btn-outline-danger">Logout</button>
     </div>
 
+    <div class="container d-flex aling-items-center justify-content-between mb-3">
+        <div>
+            <button id="planButton" type="button" class="btn btn-outline-warning">Plan</button>
+        </div>
+
+        <div>
+            <input type="checkbox" class="btn-check" id="openToWork" autocomplete="off">
+            <label class="btn btn-outline-primary" for="openToWork">Open To Work</label>
+        </div>
+    </div>
+
+
     <div class="section">
-        <h5>My Profile</h5>
-        <input id="title" class="form-control" placeholder="Title as: Software Engineer, Dev Ops, etc.">
+        <div>
+            <h5>My Name</h5>
+            <input id="name" class="form-control" placeholder="Your Name">
+        </div>
+
+        <div>
+            <h5>My Title</h5>
+            <input id="title" class="form-control" placeholder="Title as: Software Engineer, Dev Ops, etc.">
+        </div>
+
+        <div>
+            <h5>My phone</h5>
+            <input id="phone" class="form-control" placeholder="+57 Colombia only">
+        </div>
+
+        <div>
+            <h5>Description</h5>
+            <textarea style="resize: none;"
+                      class="form-control"
+                      id="description"
+                      rows="3"
+                      placeholder="About me"
+            ></textarea>
+        </div>
 
         <!-- Checkbox -->
-        <h5 class="text-secondary fs-6">Choose your skills</h5>
-        <div class="btn-group form-outline mb-4" role="group" aria-label="Basic checkbox toggle button group">
-            <input value="HTML" type="checkbox" class="btn-check" id="html" autocomplete="off">
+        <h5 class="mt-2">My Skills</h5>
+        <div class="btn-group form-outline mb-3 w-100 checkboxes" role="group" aria-label="Basic checkbox toggle button group">
+            <input value="html" type="checkbox" class="btn-check" id="html" autocomplete="off">
             <label class="btn btn-outline-primary" for="html">HTML</label>
 
-            <input value="CSS" type="checkbox" class="btn-check" id="css" autocomplete="off">
+            <input value="css" type="checkbox" class="btn-check" id="css" autocomplete="off">
             <label class="btn btn-outline-primary" for="css">CSS</label>
 
-            <input value="PYTHON" type="checkbox" class="btn-check" id="python" autocomplete="off">
+            <input value="python" type="checkbox" class="btn-check" id="python" autocomplete="off">
             <label class="btn btn-outline-primary" for="python">PYTHON</label>
 
-            <input value="SQL" type="checkbox" class="btn-check" id="sql" autocomplete="off">
+            <input value="sql" type="checkbox" class="btn-check" id="sql" autocomplete="off">
             <label class="btn btn-outline-primary" for="sql">SQL</label>
 
-            <input value="GIT" type="checkbox" class="btn-check" id="git" autocomplete="off">
+            <input value="git" type="checkbox" class="btn-check" id="git" autocomplete="off">
             <label class="btn btn-outline-primary" for="git">Git</label>
 
-            <input value="JSON-Server" type="checkbox" class="btn-check" id="json-server" autocomplete="off">
+            <input value="json-server" type="checkbox" class="btn-check" id="json-server" autocomplete="off">
             <label class="btn btn-outline-primary" for="json-server">JSON-server</label>
 
-            <input value="JS" type="checkbox" class="btn-check" id="js" autocomplete="off">
+            <input value="js" type="checkbox" class="btn-check" id="js" autocomplete="off">
             <label class="btn btn-outline-primary" for="js">JS</label>
         </div>
 
-        <button class="btn btn-dark mt-2">Save Profile</button>
-        <button class="btn btn-warning mt-2">Open To Work</button>
+        <div class="btn-group form-outline mb-3 w-100">
+            <button id="updateProfile" class="btn btn-dark mt-2">Save Profile</button>
+        </div>
     </div>
 
     <div class="section">
