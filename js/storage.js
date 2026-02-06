@@ -214,6 +214,17 @@ export async function getReservations() {
   }
 }
 
+export async function getOffers() {
+    try {
+        const response = await fetch(`${API_URL}/jobs`); // Await the response
+        const data = await response.json(); // Await the JSON parsing
+        
+        return data
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
 export async function getOfferseByCompanyId(companyId) {
     try {
         const response = await fetch(`${API_URL}/jobs`); // Await the response
@@ -267,4 +278,21 @@ export async function deleteOffer(offerId) {
   });
 
   return await deleted.json();
+}
+
+export async function updateCandidatePlan(candidateId, newPlan) {
+    try {
+        const respuesta = await fetch(`${API_URL}/candidates/${candidateId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPlan)
+        });
+
+        const json = await respuesta.json();
+        console.log('Company plan updated:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }

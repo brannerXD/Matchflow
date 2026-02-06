@@ -41,6 +41,13 @@
       "email": "chile@email.com",
       "password": "123",
       "role": "candidate"
+    },
+    {
+      "id": "21ad",
+      "name": "totoy",
+      "email": "totoy@mail.com",
+      "password": "123",
+      "role": "company"
     }
   ],
   "candidates": [
@@ -57,7 +64,7 @@
         "json-server",
         "js"
       ],
-      "plan": "pro1",
+      "plan": "pro2",
       "openToWork": true,
       "phone": "3120002222"
     },
@@ -125,6 +132,14 @@
       "industry": "Software",
       "description": "This is the description",
       "plan": "enterprise"
+    },
+    {
+      "id": "21ad",
+      "name": "totoy",
+      "email": "totoy@mail.com",
+      "industry": "",
+      "description": "",
+      "plan": "free"
     }
   ],
   "jobs": [
@@ -171,7 +186,15 @@
       "id": "MdO57eH"
     }
   ],
-  "matches": [],
+  "matches": [
+    {
+      "id": "125b",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "candidateId": "e6g5",
+      "status": "pending"
+    }
+  ],
   "reservations": [
     {
       "candidateId": "ee55",
@@ -300,7 +323,7 @@
       "candidateId": "e6g5",
       "companyId": "4401",
       "jobOfferId": "e829",
-      "active": true,
+      "active": false,
       "date": "2026-02-06T23:18:42.726Z"
     }
   ]

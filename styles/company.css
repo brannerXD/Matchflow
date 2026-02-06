@@ -245,6 +245,9 @@ form {
   gap: 0.9rem;
 }
 
+.primary-text {
+    color: #d4af37;
+}
 .modal {
   display: none;
   position: fixed;
@@ -337,4 +340,3 @@ form {
     border:none;
     font-weight: bold;
 }
-
