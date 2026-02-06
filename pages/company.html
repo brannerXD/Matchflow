@@ -108,6 +108,37 @@
       </div>
     </main>
 
+    <section id="editOfferModal" class="modal">
+      <section class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Edit Idea</h3>
+        <form id="edit-form">
+          <label
+            >Title
+            <input name="title" id="edit-title" type="text" />
+          </label>
+
+          <label
+            >Description
+            <textarea name="description" id="edit-description"></textarea>
+          </label>
+
+          <label
+            >Status
+            <select name="status" id="edit-status">
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+            </select>
+          </label>
+          <div class="d-flex justify-content-between">
+            <button id="delete-offer-btn" type="button">Delete Offer</button>
+            <button id="cancel-edit-btn" type="button">Cancel Edit</button>
+            <button id="edit-offer-btn" type="submit">Save Changes</button>
+          </div>
+        </form>
+      </section>
+    </section>
+
     <script type="module" src="./../js/api.js"></script>
     <script type="module" src="./../js/session.js"></script>
     <script type="module" src="./../js/company.js"></script>
