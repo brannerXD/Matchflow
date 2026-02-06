@@ -12,15 +12,19 @@
   <body>
     <main>
       <div class="panel">
-        <h1>holi</h1>
-      </div>
-
-      <div class="panel">
         <div class="header-bar">
           <h3>Company Panel</h3>
+          <button id="company-plans" class="btn btn-outline-danger">
+            Upgrade plan
+          </button>
           <button id="logOut" class="btn btn-outline-danger">
             Logout
           </button>
+        </div>
+
+      <div class="panel">
+        <div class="header-bar">
+          <h3>Company Profile</h3>
         </div>
 
         <div class="section">
@@ -30,22 +34,39 @@
             Create Job
           </button>
         </div>
-
-        <div class="section">
-          <h5>Open To Work Candidates</h5>
-          <ul id="candidates"></ul>
-        </div>
-
-        <div class="section">
-          <h5>Matches</h5>
-          <ul id="matches"></ul>
-        </div>
+          
       </div>
 
-      <script type="module" src="./../js/api.js"></script>
-      <script type="module" src="./../js/session.js"></script>
-      <script type="module" src="./../js/company.js"></script>
-      <script type="module" src="./../js/match.js"></script>
+
+
+        <div class="panel">
+          <div class="header-bar">
+            <h3>Candidates</h3>
+            
+          </div>
+
+          <div class="section">
+            <h5>Open To Work Candidates</h5>
+            <ul id="candidates"></ul>
+          </div>
+
+          <div class="section">
+            <h5>Matches</h5>
+            <ul id="matches"></ul>
+          </div>
+
+          <div class="section">
+            <h5>Reservations</h5>
+            <ul id="matches"></ul>
+          </div>
+        </div>
+      </div>
     </main>
+
+    <script type="module" src="./../js/api.js"></script>
+    <script type="module" src="./../js/session.js"></script>
+    <script type="module" src="./../js/company.js"></script>
+    <script type="module" src="./../js/match.js"></script>
+
   </body>
 </html>

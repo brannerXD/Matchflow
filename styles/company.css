@@ -51,7 +51,7 @@ main{
 .panel{
     width:100%;
     max-width:1000px;
-    margin:80px auto 100px auto;
+    margin:40px auto;
     padding:35px;
     border-radius:20px;
     background:rgba(255,255,255,0.05);
@@ -122,6 +122,21 @@ h2,h3,h5{
     background:#d4af37;
     border:none;
     color:#000;
+}
+
+.btn-outline-success-custom{
+    border-color:#d4af37;
+    color:#d4af37
+}
+
+.btn-outline-success-custom:hover{
+    background:#d4af37;
+    border-color:#d4af37;
+    color:#fcfcfc
+}
+
+.text-success{
+    color:#d4af37 !important;
 }
 
 .btn-success:hover{
