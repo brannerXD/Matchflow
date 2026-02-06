@@ -5,125 +5,42 @@
       "name": "Diego Morales",
       "email": "email@email.com",
       "password": "123",
-      "role": "candidate",
-      "openToWork": false
+      "role": "candidate"
     },
     {
-      "id": "12a2",
-      "name": "Mc'Donalds",
-      "email": "uwu@uwu.com",
-      "password": "123",
-      "role": "company",
-      "openToWork": false
-    },
-    {
-      "id": "22c6",
       "name": "Riwi",
-      "email": "riwi@mail.com",
-      "password": "123",
-      "role": "company",
-      "openToWork": false,
-      "plan": "free"
-    },
-    {
-      "id": "83f4",
-      "name": "Vero Martinez",
-      "email": "vero@mail.com",
-      "password": "123",
-      "role": "candidate",
-      "openToWork": false,
-      "plan": "free"
+      "email": "rwi@mail.com",
+      "id": "b237",
+      "password":"123"
     }
   ],
   "candidates": [
     {
-      "name": "Sofia Perez",
-      "title": "Frontend Developer",
+      "id": "ee55",
+      "name": "Diego Montoya",
+      "title": "UX/UI Designer",
+      "email": "email@email.com",
+      "description": "Amazing description",
       "skills": [
-        "HTML",
-        "CSS",
-        "JS"
+        "html",
+        "css",
+        "sql",
+        "json-server",
+        "js"
       ],
-      "bio": "Junior frontend dev",
+      "plan": "Premium",
       "openToWork": true,
-      "contact": {
-        "email": "sofi@mail.com",
-        "phone": "+57 3096584212"
-      },
-      "id": "ac65",
-      "description":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, ullam ratione aliquam exercitationem voluptatum facilis dolore eius porro numquam consectetur laborum, quaerat id eum aspernatur nemo, fugiat aperiam eos odio."
-    },
-    {
-      "name": "Juan Felipe",
-      "title": "Backend Developer",
-      "skills": [
-        "Node",
-        "Express",
-        "C#"
-      ],
-      "bio": "Backend lover",
-      "openToWork": false,
-      "contact": {
-        "email": "juanfe@mail.com",
-        "phone": "+57 3004563202"
-      },
-      "id": "bde7"
-    },
-    {
-      "name": "Diego Rios",
-      "title": "QA Tester",
-      "skills": [
-        "Testing"
-      ],
-      "bio": "QA junior",
-      "openToWork": true,
-      "contact": {
-        "email": "diego@mail.com",
-        "phone": "+57 3096482078"
-      },
-      "id": "74c8",
-      "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, autem enim natus reprehenderit expedita aliquam quae sit, voluptatibus ut quia, suscipit possimus blanditiis iusto beatae odio? Dolores excepturi dolor fugiat!"
-    },
-    {
-      "name": "Carlos",
-      "title": "Fullstack Developer",
-      "skills": [
-        "JavaScript",
-        "Node"
-      ],
-      "bio": "Fullstack junior",
-      "openToWork": false,
-      "contact": {
-        "email": "carlos@mail.com",
-        "phone": "+57 3012365496"
-      },
-      "id": "c3b8"
-    },
-    {
-      "name": "Branner",
-      "title": "UI Designer",
-      "skills": [
-        "Figma"
-      ],
-      "bio": "UI/UX junior",
-      "openToWork": false,
-      "contact": {
-        "email": "breanner@mail.com",
-        "phone": "+57 3213846951"
-      },
-      "id": "f773"
+      "phone": "3120002222"
     }
   ],
   "companies": [
     {
       "name": "Riwi",
       "industry": "Software",
-      "id": "b237"
-    },
-    {
-      "name": "DataForge",
-      "industry": "Data",
-      "id": "131b"
+      "email":"rwi@mail.com",
+      "description":"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat facere ex animi nulla aspernatur reprehenderit sed, dicta nihil fugiat esse ea error doloribus, culpa rerum accusamus cupiditate tempore consectetur earum.",
+      "id": "b237",
+      "plan":"free"
     }
   ],
   "jobs": [
@@ -131,7 +48,8 @@
       "title": "Frontend Jr",
       "description": "HTML, CSS, JS",
       "status": "open",
-      "id": "4591"
+      "id": "4591",
+      "companyId":"22c6"
     },
     {
       "title": "QA Jr",
