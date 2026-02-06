@@ -2,96 +2,50 @@
   "users": [
     {
       "id": "ee55",
-      "fullName": "Diego Morales",
+      "name": "Diego Morales",
       "email": "email@email.com",
       "password": "123",
-      "role": "candidate",
-      "openToWork": false
+      "role": "candidate"
     },
     {
       "id": "12a2",
-      "fullName": "Mc'Donalds",
+      "name": "Mc'Donalds",
       "email": "uwu@uwu.com",
       "password": "123",
-      "role": "company",
-      "openToWork": false
+      "role": "company"
+    },
+    {
+      "id": "ecff",
+      "name": "SOrnero",
+      "email": "sorne@email.com",
+      "password": "123",
+      "role": "candidate"
+    },
+    {
+      "id": "adad",
+      "name": "meloski",
+      "email": "melo@email.com",
+      "password": "123",
+      "role": "company"
     }
   ],
   "candidates": [
     {
-      "fullName": "sofia",
-      "title": "Frontend Developer",
+      "id": "ee55",
+      "name": "Diego Montoya",
+      "title": "UX/UI Designer",
+      "email": "email@email.com",
+      "description": "Amazing description",
       "skills": [
-        "HTML",
-        "CSS",
-        "JS"
+        "html",
+        "css",
+        "sql",
+        "json-server",
+        "js"
       ],
-      "bio": "Junior frontend dev",
+      "plan": "Premium",
       "openToWork": true,
-      "contact": {
-        "email": "sofi@mail.com",
-        "phone": "+57 3096584212"
-      },
-      "id": "ac65"
-    },
-    {
-      "fullName": "Juan Felipe",
-      "title": "Backend Developer",
-      "skills": [
-        "Node",
-        "Express",
-        "C#"
-      ],
-      "bio": "Backend lover",
-      "openToWork": false,
-      "contact": {
-        "email": "juanfe@mail.com",
-        "phone": "+57 3004563202"
-      },
-      "id": "bde7"
-    },
-    {
-      "fullName": "Diego Rios",
-      "title": "QA Tester",
-      "skills": [
-        "Testing"
-      ],
-      "bio": "QA junior",
-      "openToWork": true,
-      "contact": {
-        "email": "diego@mail.com",
-        "phone": "+57 3096482078"
-      },
-      "id": "74c8"
-    },
-    {
-      "fullName": "Carlos",
-      "title": "Fullstack Developer",
-      "skills": [
-        "JavaScript",
-        "Node"
-      ],
-      "bio": "Fullstack junior",
-      "openToWork": false,
-      "contact": {
-        "email": "carlos@mail.com",
-        "phone": "+57 3012365496"
-      },
-      "id": "c3b8"
-    },
-    {
-      "fullName": "Branner",
-      "title": "UI Designer",
-      "skills": [
-        "Figma"
-      ],
-      "bio": "UI/UX junior",
-      "openToWork": false,
-      "contact": {
-        "email": "breanner@mail.com",
-        "phone": "+57 3213846951"
-      },
-      "id": "f773"
+      "phone": "3120002222"
     }
   ],
   "companies": [

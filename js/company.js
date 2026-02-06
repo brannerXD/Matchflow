@@ -39,3 +39,5 @@ async function reserveAndMatch(candidateId) {
 
     createMatch(companyId, jobId, candidateId);
 }
+
+document.getElementById("logOut").addEventListener("click", session.logout)

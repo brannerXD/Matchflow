@@ -19,6 +19,25 @@ export async function saveUser(user) {
     }
 }
 
+export async function saveCandidate(candidate) {
+    try {
+        const response = await fetch(`${API_URL}/candidates`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(candidate)
+        });
+
+        const responseData = await response.json();
+        console.log('Success:', responseData);
+        return responseData;
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 export async function verifyUser(user) {
     try {
         const response = await fetch(`${API_URL}/users`); // Await the response
@@ -36,5 +55,65 @@ export async function verifyUser(user) {
         return false
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+export async function getUserById(userId) {
+    try {
+        const response = await fetch(`${API_URL}/users/${userId}`); // Await the response
+        const data = await response.json(); // Await the JSON parsing
+        console.log(data);
+
+        console.log("not found")
+        return data
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+export async function getCandidateById(userId) {
+    try {
+        const response = await fetch(`${API_URL}/candidates/${userId}`); // Await the response
+        const data = await response.json(); // Await the JSON parsing
+        console.log(data);
+
+        console.log("not found")
+        return data
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+export async function updateCandidate(userId, newData) {
+    try {
+        const respuesta = await fetch(`${API_URL}/candidates/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newData)
+        });
+
+        const json = await respuesta.json();
+        console.log('Usuario actualizado:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function updateState(userId, newState) {
+    try {
+        const respuesta = await fetch(`${API_URL}/candidates/${userId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newState)
+        });
+
+        const json = await respuesta.json();
+        console.log('Usuario actualizado:', json);
+    } catch (error) {
+        console.error('Error:', error);
     }
 }
