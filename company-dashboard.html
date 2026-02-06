@@ -1,74 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Dashboard - Matchflow</title>
-    <style>
-        /* Basic Grid Layout for your Feature */
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f0f2f5; margin: 0; padding: 20px; }
-        .search-container { max-width: 1200px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; }
-        
-        .grid-layout { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-            gap: 20px; 
-        }
+    <link rel="stylesheet" href="./css/styles-companydash.css">
+    <script src="./js/searchController.js" defer></script>
 
-        .candidate-card { 
-            background: white; 
-            padding: 20px; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-            display: flex; 
-            flex-direction: column;
-            transition: transform 0.2s;
-        }
-        .candidate-card:hover { transform: translateY(-5px); }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-        .skill-tag { 
-            background: #e3f2fd; 
-            color: #1976d2; 
-            padding: 4px 10px; 
-            border-radius: 20px; 
-            font-size: 0.8rem; 
-            margin: 4px; 
-            display: inline-block;
-        }
-
-        .btn-match { 
-            background: #27ae60; 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            border-radius: 6px; 
-            cursor: pointer; 
-            margin-top: auto; 
-            font-weight: bold;
-        }
-        .btn-match:hover { background: #219150; }
-
-        .filters { margin-bottom: 20px; text-align: center; }
-        #search-skill { padding: 10px; width: 100%; max-width: 400px; border: 1px solid #ccc; border-radius: 5px; }
-    </style>
+    <title>Job Offers | MatchFlow</title>
 </head>
+
 <body>
-    <main class="search-container">
-        <header>
-            <h1>Candidate Finder</h1>
-            <p>Only showing candidates with <strong>Open to Work</strong> status active.</p>
-        </header>
 
-        <section class="filters">
-            <input type="text" id="search-skill" placeholder="Filter by skill (e.g. React, Node)...">
+    <header>
+        <nav>
+            <h2>MatchFlow</h2>
+            <ul>
+                <li><a href="company.html">Profile</a></li>
+                <li><a href="./matches.html">Matches</a></li>
+                <li><a href="./reser-dash.html">Reserved</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+
+            <h1>Matched Candidates</h1>
+            <p>Review candidates that match your job offers</p>
+            <section>
+                <h1>Candidate Search</h1>
+
+                <input type="text" id="searchInput" placeholder="Search by name, role or skill..." />
+
+                <div id="results"></div>
+            </section>
+
+            <div class="candidates-grid">
+            </div>
+
         </section>
 
-        <section id="candidates-grid" class="grid-layout">
-            <div id="loading-spinner">Loading available candidates...</div>
-        </section>
-    </main>
+    <footer>
+        <div class="text-center p-3 bg-dark text-white">
+            <p>Created By</p>
+            <a class="tr" href="https://github.com/brannerXD">Branner</a>
+            <a class="tr" href="https://github.com/AndresHidrobo">Andres</a>
+            <a class="mk" href="https://github.com/sofiadevops-png">Sofía</a>
+            <a class="tr" href="https://github.com/edwar198720Arthas">Edwar</a>
+            <a class="mk" href="https://github.com/JuanFelipe0215">Felipe</a>
+            <div class="clans">
+                <p class="tr">Turing</p>
+                <p class="mk">McCarthy</p>
+            </div>
+            <p class="footer">© 2026 MatchFlow. All rights reserved.</p>
+        </div>
 
-    <script type="module" src="./js/searchController.js"></script>
+    </footer>
+
+    <script src="./js/matches.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
