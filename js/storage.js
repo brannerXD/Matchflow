@@ -199,6 +199,21 @@ export async function updateCompanyPlan(companyId, newPlan) {
     }
 }
 
+export async function getReservations() {
+  try {
+    const response = await fetch(`${API_URL}/reservations`);
+
+    if (!response.ok) {
+      throw new Error("Error fetching reservations");
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("getReservations failed:", error);
+    throw error; 
+  }
+}
+
 export async function getOfferseByCompanyId(companyId) {
     try {
         const response = await fetch(`${API_URL}/jobs`); // Await the response

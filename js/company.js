@@ -2,6 +2,12 @@
 import * as storage from "./storage.js";
 import * as session from "./session.js";
 
+const candidateLimitsReservations = {
+  free:1,
+  pro1:2,
+  pro2:5
+}
+
 const companyId = session.getSession().id;
 const companyPlan = document.getElementById("company-plan");
 const jobOfferForm = document.getElementById("add-job-offer");
@@ -30,33 +36,81 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 document.getElementById("logOut")?.addEventListener("click", session.logout);
 
+// async function loadCandidates() {
+//   //MF2: getCandidates as new function
+//   const candidates = await storage.getCandidates("candidates");
+//   localStorage.setItem("candidatesCache", JSON.stringify(candidates));
+
+//   const ul = document.getElementById("candidates");
+//   ul.innerHTML = "";
+
+//   candidates
+//     .filter((c) => c.openToWork)
+//     .forEach((c) => {
+//       const li = document.createElement("li");
+//       li.innerHTML = `
+
+//       <div class="card" style="width: 100%;">
+//         <div class="card-body">
+//           <h5 class="card-title">${c.name}</h5>
+//           <h6 class="card-subtitle mb-2">${c.title}</h6>
+//           <p class="card-text">${c.description}</p>
+//           <button href="#" class="btn btn-sm btn-reserve">Reserve</button>
+//           <button href="#" class="btn btn-sm btn-match">Match</button>
+//         </div>
+//       </div>`;
+
+//       ul.appendChild(li);
+//     });
+// }
+
 async function loadCandidates() {
-  //MF2: getCandidates as new function
   const candidates = await storage.getCandidates("candidates");
-  localStorage.setItem("candidatesCache", JSON.stringify(candidates));
+  const reservations = await storage.getReservations();
+  const company = await storage.getCompanyById(companyId);
 
   const ul = document.getElementById("candidates");
   ul.innerHTML = "";
 
   candidates
-    .filter((c) => c.openToWork)
-    .forEach((c) => {
-      const li = document.createElement("li");
-      li.innerHTML = `
+    .filter(c => c.openToWork)
+    .forEach(candidate => {
 
-      <div class="card" style="width: 100%;">
-        <div class="card-body">
-          <h5 class="card-title">${c.name}</h5>
-          <h6 class="card-subtitle mb-2">${c.title}</h6>
-          <p class="card-text">${c.description}</p>
-          <button href="#" class="btn btn-sm btn-reserve">Reserve</button>
-          <button href="#" class="btn btn-sm btn-match">Match</button>
+      const visibility = getCandidateVisibility(
+        company,
+        candidate,
+        reservations
+      );
+
+      // ❌ Si no es visible, no se renderiza
+      if (!visibility.visible) return;
+
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">${candidate.name}</h5>
+            <h6 class="card-subtitle mb-2">${candidate.title}</h6>
+            <p class="card-text">${candidate.description}</p>
+
+            <button 
+              class="btn btn-sm btn-reserve"
+              ${!visibility.reservable ? "disabled" : ""}
+              data-candidate-id="${candidate.id}"
+            >
+              ${visibility.reservable ? "Reserve" : "Not available"}
+            </button>
+
+            <button class="btn btn-sm btn-match">Match</button>
+          </div>
         </div>
-      </div>`;
+      `;
 
       ul.appendChild(li);
     });
 }
+
 
 async function renderProfile() {
   let company = await storage.getCompanyById(companyId);
@@ -130,3 +184,44 @@ async function newJobOffer() {
   await storage.saveJobOffer(jobData);
   await renderOffers();
 }
+
+function getActiveReservations(candidateId, reservations) {
+  return reservations.filter(
+    reserve => reserve.candidateId === candidateId && reserve.status === "active"
+  ).length;
+}
+
+function canCandidateBeReserved(candidate, reservations) {
+  const limit = candidateLimitsReservations[candidate.plan];
+  const active = getActiveReservations(candidate.id, reservations);
+  return active < limit;
+}
+
+function canCompanySeeCandidate(company, candidate, reservations) {
+  const isReserved = getActiveReservations(candidate.id, reservations) > 0;
+
+  if (company.plan === "enterprise") return true;
+
+  if (company.plan === "business") {
+    return !isReserved;
+  }
+
+  // free
+  return !isReserved;
+}
+
+function getCandidateVisibility(company, candidate, reservations) {
+  const visible = canCompanySeeCandidate(company, candidate, reservations);
+
+  if (!visible) {
+    return { visible: false };
+  }
+
+  const reservable = canCandidateBeReserved(candidate, reservations);
+
+  return {
+    visible: true,
+    reservable
+  };
+}
+
