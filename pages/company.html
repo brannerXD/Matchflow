@@ -37,10 +37,25 @@
 
         <div class="section">
           <h5>Create Job Offer</h5>
-          <input id="jobTitle" class="form-control" placeholder="Job title" />
+
+          <form id="add-job-offer">
+          <label
+            >Title
+            <input name="title" id="job-title" class="form-control" placeholder="Job title" type="text" />
+          </label>
+
+          <label
+            >Description
+            <textarea name="description" id="job-description" class="form-control" placeholder="Job description" type="text"></textarea>
+          </label>
+
+
           <button class="btn btn-success mt-2">
             Create Job
           </button>
+        </form>
+
+          
         </div>
           
       </div>
