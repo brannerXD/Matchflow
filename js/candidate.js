@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let loggedUser = session.getSession()
     if (loggedUser) {
         if (loggedUser.role !== "candidate") {
-            window.location.replace("./pages/company.html")
+            window.location.replace("../pages/company.html")
         }
     }
     await renderProfile()

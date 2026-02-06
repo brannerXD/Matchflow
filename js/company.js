@@ -11,21 +11,24 @@ const candidateLimitsReservations = {
 const companyId = session.getSession().id;
 const companyPlan = document.getElementById("company-plan");
 const jobOfferForm = document.getElementById("add-job-offer");
+const offers = document.getElementById("job-offers");
+let currentEditId = null;
+const modal = document.getElementById("editOfferModal");
 
 document.addEventListener("DOMContentLoaded", async () => {
   let loggedUser = session.getSession();
   if (loggedUser) {
     if (loggedUser.role !== "company") {
-      window.location.replace("./pages/candidate.html");
+      window.location.replace("../pages/candidate.html");
     }
   }
 
-  if (window.location.pathname === "/pages/company.html") {
+  if (window.location.pathname === "../pages/company.html") {
     await renderProfile();
     await loadCandidates();
     await renderOffers();
 
-  } else if (window.location.pathname === "/pages/company-plans.html") {
+  } else if (window.location.pathname === "../pages/company-plans.html") {
     const planSection = document.querySelector(".panel");
     planSection.addEventListener("click", async (event) => {
       const newPlan = event.target.closest(".plan-card").dataset.id;
@@ -35,34 +38,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 document.getElementById("logOut")?.addEventListener("click", session.logout);
-
-// async function loadCandidates() {
-//   //MF2: getCandidates as new function
-//   const candidates = await storage.getCandidates("candidates");
-//   localStorage.setItem("candidatesCache", JSON.stringify(candidates));
-
-//   const ul = document.getElementById("candidates");
-//   ul.innerHTML = "";
-
-//   candidates
-//     .filter((c) => c.openToWork)
-//     .forEach((c) => {
-//       const li = document.createElement("li");
-//       li.innerHTML = `
-
-//       <div class="card" style="width: 100%;">
-//         <div class="card-body">
-//           <h5 class="card-title">${c.name}</h5>
-//           <h6 class="card-subtitle mb-2">${c.title}</h6>
-//           <p class="card-text">${c.description}</p>
-//           <button href="#" class="btn btn-sm btn-reserve">Reserve</button>
-//           <button href="#" class="btn btn-sm btn-match">Match</button>
-//         </div>
-//       </div>`;
-
-//       ul.appendChild(li);
-//     });
-// }
 
 async function loadCandidates() {
   const candidates = await storage.getCandidates("candidates");
@@ -128,22 +103,20 @@ async function renderProfile() {
 }
 
 async function renderOffers() {
-  let jobOffers = await storage.getOfferseByCompanyId(companyId);
-  console.log(jobOffers)
-
+  const jobOffers = await storage.getOfferseByCompanyId(companyId);
+  
   const ul = document.getElementById("job-offers");
   ul.innerHTML = "";
 
   jobOffers.forEach((offer) => {
       const li = document.createElement("li");
       li.innerHTML = `
-
-      <div class="card" style="width: 100%;">
+      <div data-id=${offer.id} class="card" style="width: 100%;">
         <div class="card-body">
           <h5 class="card-title">${offer.title}</h5>
           <p class="card-text">${offer.description}</p>
-          <button href="#" class="btn btn-sm btn-reserve">${offer.status.charAt(0).toUpperCase() + offer.status.slice(1)}</button>
-          <button href="#" class="btn btn-sm btn-match">Edit Offer</button>
+          <button href="#" class="btn btn-sm btn-match">${offer.status.charAt(0).toUpperCase() + offer.status.slice(1)}</button>
+          <button href="#" class="edit-btn btn btn-sm btn-reserve">Edit Offer</button>
         </div>
       </div>`;
 
@@ -165,20 +138,19 @@ async function updateProfile() {
 }
 
 companyPlan?.addEventListener("click", () => {
-  window.location.replace("./../pages/company-plans.html");
+  window.location.replace("../pages/company-plans.html");
 });
 
 async function changePlan(newPlan) {
   await storage.updateCompanyPlan(companyId, { plan: newPlan });
-  window.location.replace("./../pages/company.html");
+  window.location.replace("../pages/company.html");
   await renderProfile();
 }
 
 jobOfferForm?.addEventListener('submit', (event) =>{
   event.preventDefault();
   newJobOffer()
-}
-)
+})
 
 async function newJobOffer() {
   const jobData = {
@@ -190,6 +162,40 @@ async function newJobOffer() {
 
   await storage.saveJobOffer(jobData);
   await renderOffers();
+}
+
+offers?.addEventListener("click", (event) => {
+  const oldOffer = event.target.closest(".card");
+  const oldOfferId = oldOffer.dataset.id;
+  if (event.target.matches(".edit-btn")) {
+    editJobOffer(oldOffer, oldOfferId);
+  }
+})
+
+function editJobOffer(jobOffer, offerId) {
+  modal.style.display = "block";
+  currentEditId = offerId;
+
+  const editTitle = document.getElementById("edit-title");
+  const editDescription = document.getElementById("edit-description");
+  const editStatus = document.getElementById("edit-status");
+  const oldTitle = jobOffer.querySelector(".card-title").innerHTML;
+  const oldDescription = jobOffer.querySelector(".card-text").innerHTML.trim();
+  const oldStatus = jobOffer.querySelector(".btn-match").innerHTML;
+  editTitle.value = oldTitle;
+  editDescription.value = oldDescription;
+  editStatus.value = oldStatus.toLowerCase();
+
+  const span = document.getElementsByClassName("close")[0];
+  span.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
 }
 
 function getActiveReservations(candidateId, reservations) {
@@ -239,14 +245,52 @@ function getCandidateBadge(candidate, reservations, visibility) {
   );
 
   if (!visibility.reservable && activeReservations > 0) {
-    return `<span class="badge bg-danger">Max limit reached</span>`;
+    return `<span class="badge bg-unavailable">Max limit reached</span>`;
   }
 
   if (activeReservations > 0) {
-    return `<span class="badge bg-warning text-dark">Reserved</span>`;
+    return `<span class="badge bg-reserved">Reserved</span>`;
   }
 
-  return `<span class="badge bg-success">Available</span>`;
+  return `<span class="badge bg-available">Available</span>`;
 }
 
+const form = document.getElementById("edit-form");
+form?.addEventListener("submit", (event) => {
+  
+  event.preventDefault();
+  const editedOffer = new FormData(form);
+  saveEditedOffer(editedOffer, currentEditId);
+  modal.style.display = "none";
+});
+
+async function saveEditedOffer(inputEdit, id) {
+  const jobOffers = await storage.getOfferseByCompanyId(companyId);
+  const offer = jobOffers.find((offer) => offer.id === id);
+
+  for (const [key, value] of inputEdit) {
+    offer[key] = value;
+  }
+
+  await storage.updateJobOffer(id, offer);
+}
+
+const cancelBtn = document.getElementById("cancel-edit-btn");
+const deleteBtn = document.getElementById("delete-offer-btn");
+
+cancelBtn?.addEventListener("click", (event) =>{
+  event.preventDefault();
+
+  if (window.confirm("Discard changes?")) {
+    modal.style.display = "none";
+}
+})
+
+deleteBtn?.addEventListener("click", async (event) =>{
+  event.preventDefault();
+  if (window.confirm("Do you want to delete this offer?")) {
+    await storage.deleteOffer(currentEditId)
+    modal.style.display = "none";
+}
+})
 

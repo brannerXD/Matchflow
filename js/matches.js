@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:4001";
 const tableBody = document.getElementById("matchesTableBody");
 
 async function loadMatches() {

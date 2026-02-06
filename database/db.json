@@ -124,7 +124,7 @@
       "email": "riwi@mail.com",
       "industry": "Software",
       "description": "This is the description",
-      "plan": "free"
+      "plan": "enterprise"
     }
   ],
   "jobs": [
@@ -171,22 +171,7 @@
       "id": "MdO57eH"
     }
   ],
-  "matches": [
-    {
-      "id": "6751",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "candidateId": "e6g5",
-      "status": "pending"
-    },
-    {
-      "id": "f98b",
-      "companyId": "4401",
-      "jobOfferId": "e829",
-      "candidateId": "e345",
-      "status": "pending"
-    }
-  ],
+  "matches": [],
   "reservations": [
     {
       "candidateId": "ee55",
@@ -293,6 +278,30 @@
       "jobOfferId": "e829",
       "active": false,
       "date": "2026-02-06T22:45:53.362Z"
+    },
+    {
+      "id": "a091",
+      "candidateId": "e6g5",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "date": "2026-02-06T23:14:03.727Z"
+    },
+    {
+      "id": "c65f",
+      "candidateId": "e455",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": false,
+      "date": "2026-02-06T23:17:07.913Z"
+    },
+    {
+      "id": "f0fb",
+      "candidateId": "e6g5",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "active": true,
+      "date": "2026-02-06T23:18:42.726Z"
     }
   ]
 }

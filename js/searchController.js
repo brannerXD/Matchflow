@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:4001";
 const container = document.getElementById("candidates");
 const searchInput = document.getElementById("searchInput");
 
@@ -7,7 +7,7 @@ const isLogged = true;
 const currentUser = {
   role: "company",
   companyId: "4401",
-  plan: "Free" // ⬅️ AGREGA EL PLAN AQUÍ
+  plan: "free" // ⬅️ AGREGA EL PLAN AQUÍ
 };
 
 const planLimits = {

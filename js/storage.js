@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "http://localhost:4001";
 
 //MF2
 export async function getCandidates() {
@@ -219,7 +219,6 @@ export async function getOfferseByCompanyId(companyId) {
         const response = await fetch(`${API_URL}/jobs`); // Await the response
         const data = await response.json(); // Await the JSON parsing
         
-        console.log(data);
         return data.filter(offer => offer.companyId === companyId)
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
@@ -243,4 +242,29 @@ export async function saveJobOffer(jobOffer) {
     } catch (error) {
         console.error('Error:', error);
     }
+}
+
+export async function updateJobOffer(offerId, newData) {
+    try {
+        const response = await fetch(`${API_URL}/jobs/${offerId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newData)
+        });
+
+        const json = await response.json();
+        console.log('Updated offer:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function deleteOffer(offerId) {
+  const deleted = await fetch(`${API_URL}/jobs/${offerId}`, {
+    method: "DELETE"
+  });
+
+  return await deleted.json();
 }
