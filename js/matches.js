@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+/* const API_URL = "http://localhost:3000";
 const tableBody = document.getElementById("matchesTableBody");
 
 async function loadMatches() {
@@ -112,3 +112,4 @@ tableBody.addEventListener("click", async (e) => {
 });
 
 loadMatches();
+ */

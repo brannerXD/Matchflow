@@ -36,9 +36,10 @@ async function loadData() {
 
 function isCandidateReserved(candidateId) {
   return reservations.some(
-    r => r.active === true && r.candidateId === candidateId
+    r => r.status === "active" && r.candidateId === candidateId
   );
 }
+
 
 function canSeeCandidate(candidate) {
   if (!isLogged) return false;
@@ -53,14 +54,21 @@ function searchCandidates(text) {
 
   return candidates
     .filter(canSeeCandidate)
-    .filter(c =>
-      c.fullName.toLowerCase().includes(query) ||
-      c.title.toLowerCase().includes(query) ||
-      c.skills.some(skill =>
-        skill.toLowerCase().includes(query)
-      )
-    );
+    .filter(c => {
+      const name = c.name || "";
+      const title = c.title || "";
+      const skills = Array.isArray(c.skills) ? c.skills : [];
+
+      return (
+        name.toLowerCase().includes(query) ||
+        title.toLowerCase().includes(query) ||
+        skills.some(skill =>
+          skill.toLowerCase().includes(query)
+        )
+      );
+    });
 }
+
 
 
 async function reserveCandidate(candidateId) {
@@ -101,17 +109,18 @@ async function createMatch(candidateId) {
 async function releaseReservation(candidateId) {
   const reservation = reservations.find(
     r =>
-      r.active &&
+      r.status === "active" &&
       r.candidateId === candidateId &&
       r.companyId === currentUser.companyId
   );
+
 
   if (!reservation) return;
 
   await fetch(`${API_URL}/reservations/${reservation.id}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ active: false })
+    body: JSON.stringify({ status: "inactive" })
   });
 
   loadData();
