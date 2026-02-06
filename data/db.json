@@ -33,6 +33,15 @@
       "role": "candidate",
       "openToWork": false,
       "plan": "free"
+    },
+    {
+      "id": "be9e",
+      "fullName": "kevin",
+      "email": "kevin@gmail.com",
+      "password": "12345",
+      "role": "candidate",
+      "openToWork": false,
+      "plan": "free"
     }
   ],
   "candidates": [
