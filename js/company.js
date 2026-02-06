@@ -82,6 +82,12 @@ async function loadCandidates() {
         reservations
       );
 
+      const badge = getCandidateBadge(
+        candidate,
+        reservations,
+        visibility
+      );
+
       if (!visibility.visible) return;
 
       const li = document.createElement("li");
@@ -89,7 +95,10 @@ async function loadCandidates() {
       li.innerHTML = `
         <div class="card" style="width: 100%;">
           <div class="card-body">
-            <h5 class="card-title">${candidate.name}</h5>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="card-title mb-0">${candidate.name}</h5>
+              ${badge}
+            </div>
             <h6 class="card-subtitle mb-2">${candidate.title}</h6>
             <p class="card-text">${candidate.description}</p>
 
@@ -109,7 +118,6 @@ async function loadCandidates() {
       ul.appendChild(li);
     });
 }
-
 
 async function renderProfile() {
   let company = await storage.getCompanyById(companyId);
@@ -223,4 +231,22 @@ function getCandidateVisibility(company, candidate, reservations) {
     reservable
   };
 }
+
+function getCandidateBadge(candidate, reservations, visibility) {
+  const activeReservations = getActiveReservations(
+    candidate.id,
+    reservations
+  );
+
+  if (!visibility.reservable && activeReservations > 0) {
+    return `<span class="badge bg-danger">Max limit reached</span>`;
+  }
+
+  if (activeReservations > 0) {
+    return `<span class="badge bg-warning text-dark">Reserved</span>`;
+  }
+
+  return `<span class="badge bg-success">Available</span>`;
+}
+
 
