@@ -82,7 +82,6 @@ async function loadCandidates() {
         reservations
       );
 
-      // ❌ Si no es visible, no se renderiza
       if (!visibility.visible) return;
 
       const li = document.createElement("li");
