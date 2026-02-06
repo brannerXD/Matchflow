@@ -66,27 +66,24 @@
           <form id="add-job-offer">
           <label
             >Title
-            <input name="title" id="job-title" class="form-control" placeholder="Job title" type="text" />
+            <input name="title" id="job-title" class="form-control" placeholder="Job title" type="text" required/>
           </label>
 
           <label
             >Description
-            <textarea name="description" id="job-description" class="form-control" placeholder="Job description" type="text"></textarea>
+            <textarea name="description" id="job-description" class="form-control" placeholder="Job description" type="text" required></textarea>
           </label>
-
-
-          <button class="btn btn-success mt-2">
+          <button type="submit" class="btn btn-success mt-2">
             Create Job
           </button>
         </form>
-
-          
+        </div> 
+        
+        <div class="section">
+          <h5>Company Offers</h5>
+          <ul id="job-offers"></ul>
         </div>
-          
       </div>
-
-
-
         <div class="panel">
           <div class="header-bar">
             <h4>Candidates</h4>

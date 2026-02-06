@@ -198,3 +198,34 @@ export async function updateCompanyPlan(companyId, newPlan) {
         console.error('Error:', error);
     }
 }
+
+export async function getOfferseByCompanyId(companyId) {
+    try {
+        const response = await fetch(`${API_URL}/jobs`); // Await the response
+        const data = await response.json(); // Await the JSON parsing
+        
+        console.log(data);
+        return data.filter(offer => offer.companyId === companyId)
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+export async function saveJobOffer(jobOffer) {
+    try {
+        const response = await fetch(`${API_URL}/jobs`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(jobOffer)
+        });
+
+        const responseData = await response.json();
+        console.log('Success:', responseData);
+        return responseData;
+
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
