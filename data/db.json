@@ -52,14 +52,14 @@
       "description": "Amazing description",
       "skills": [
         "html",
-        "css",
+        "python",
         "sql",
         "json-server",
         "js"
       ],
       "plan": "free",
       "openToWork": true,
-      "phone": "3120002222"
+      "phone": "3125502222"
     },
     {
       "id": "e455",
@@ -91,7 +91,7 @@
         "js"
       ],
       "plan": "pro2",
-      "openToWork": true,
+      "openToWork": false,
       "phone": "3177002222"
     },
     {
@@ -104,7 +104,7 @@
         "html",
         "css"
       ],
-      "plan": "free",
+      "plan": "pro2",
       "openToWork": true,
       "phone": "3120002112"
     }
@@ -123,7 +123,7 @@
       "name": "Riwi",
       "email": "riwi@mail.com",
       "industry": "Software",
-      "description": "This is the description",
+      "description": "This is riwi",
       "plan": "enterprise"
     }
   ],
@@ -164,11 +164,25 @@
       "status": "open"
     },
     {
-      "title": "QA Sr",
-      "description": "Ambiente bonito y cositas de QA",
+      "id": "d9e3",
+      "title": "Front-end developer",
+      "description": "New offer",
       "status": "open",
-      "companyId": "3h5b",
-      "id": "MdO57eH"
+      "companyId": "3h5b"
+    },
+    {
+      "id": "80e3",
+      "title": "Back-end developer",
+      "description": "New offer",
+      "status": "open",
+      "companyId": "3h5b"
+    },
+    {
+      "id": "3494",
+      "title": "Front-end jr",
+      "description": "Request",
+      "status": "open",
+      "companyId": "3h5b"
     }
   ],
   "matches": [],
@@ -176,8 +190,17 @@
     {
       "candidateId": "ee55",
       "companyId": "323b",
-      "status": "active",
-      "id": "beda"
+      "status": "active"
+    },
+    {
+      "candidateId": "ee55",
+      "companyId": "3h5b",
+      "status": "active"
+    },
+    {
+      "candidateId": "e6g5",
+      "companyId": "323b",
+      "status": "active"
     }
   ]
 }

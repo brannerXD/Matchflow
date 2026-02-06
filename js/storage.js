@@ -255,6 +255,31 @@ export async function saveJobOffer(jobOffer) {
     }
 }
 
+export async function updateJobOffer(offerId, newData) {
+    try {
+        const response = await fetch(`${API_URL}/jobs/${offerId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newData)
+        });
+
+        const json = await response.json();
+        console.log('Updated offer:', json);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function deleteOffer(offerId) {
+  const deleted = await fetch(`${API_URL}/jobs/${offerId}`, {
+    method: "DELETE"
+  });
+
+  return await deleted.json();
+}
+
 export async function updateCandidatePlan(candidateId, newPlan) {
     try {
         const respuesta = await fetch(`${API_URL}/candidates/${candidateId}`, {
