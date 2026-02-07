@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     let loggedUser = session.getSession()
     if (loggedUser) {
         if (loggedUser.role !== "candidate") {
-            window.location.replace("./pages/company.html")
+            window.location.replace("/pages/company.html")
         }
     } else {
-        window.location.replace("./index.html")
+        window.location.replace("/index.html")
     }
 
     const planSection = document.querySelector(".panel");
@@ -23,6 +23,6 @@ const candidateId = session.getSession().id;
 
 async function changePlan(newPlan) {
   await storage.updateCandidatePlan(candidateId, { plan: newPlan });
-  window.location.replace("./../pages/candidate.html");
+  window.location.replace("/pages/candidate.html");
   await renderProfile();
 }

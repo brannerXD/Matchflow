@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   let loggedUser = session.getSession();
   if (loggedUser) {
     if (loggedUser.role !== "company") {
-      window.location.replace("./pages/candidate.html");
+      window.location.replace("/pages/candidate.html");
     }
   } else {
-    window.location.replace("./index.html");
+    window.location.replace("/index.html");
   }
 
   if (window.location.pathname === "/pages/company.html") {
@@ -80,14 +80,14 @@ async function loadCandidates() {
             <p class="card-text">${candidate.description}</p>
 
             <button 
-              class="btn btn-sm btn-reserve"
+              class="btn btn-sm btn-reserve" onclick="reserveCandidate('${candidate.id}')"
               ${!visibility.reservable ? "disabled" : ""}
               data-candidate-id="${candidate.id}"
             >
               ${visibility.reservable ? "Reserve" : "Not available"}
             </button>
 
-            <button class="btn btn-sm btn-match">Match</button>
+            <button class="btn btn-sm btn-match" onclick="createMatch('${candidate.id}')">Match</button>
           </div>
         </div>
       `;

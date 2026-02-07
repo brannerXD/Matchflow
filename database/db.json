@@ -185,22 +185,33 @@
       "companyId": "3h5b"
     }
   ],
-  "matches": [],
+  "matches": [
+    {
+      "id": "cfba",
+      "companyId": "4401",
+      "jobOfferId": "e829",
+      "candidateId": "e6g5",
+      "status": "pending"
+    }
+  ],
   "reservations": [
     {
       "candidateId": "ee55",
       "companyId": "323b",
-      "status": "active"
+      "status": "active",
+      "id": "8501"
     },
     {
       "candidateId": "ee55",
       "companyId": "3h5b",
-      "status": "active"
+      "status": "active",
+      "id": "879a"
     },
     {
       "candidateId": "e6g5",
       "companyId": "323b",
-      "status": "active"
+      "status": "active",
+      "id": "2169"
     }
   ]
 }

@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     let loggedUser = session.getSession();
       if (loggedUser) {
         if (loggedUser.role !== "company") {
-            window.location.replace("./pages/candidate.html");
+            window.location.replace("/pages/candidate.html");
         } else {
-            window.location.replace("./pages/company.html");
+            window.location.replace("/pages/company.html");
         }
     }
 })
